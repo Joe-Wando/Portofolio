@@ -6,53 +6,52 @@
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="output.css" />
   </head>
-  <body>
+  <body class="bg-slate-900 text-sky-400">
     <!-- 1. Header / Navigation -->
     <header>
       <!-- Mettre un logo, et une barre de navigation -->
     </header>
 
-    <!-- 2. Section Présentation -->
-    <section>
-           <!-- Se présenter simplement -->
-            <div>
-                <h1 class="text-center text-pink-700">Happy to see you et bienvenue sur mon portfolio</h1>
-            </div>
-    </section>
-   
-    <!-- 3. Section À propos -->
-    <section id="apropos">
-      <!-- À remplir: présentation personnelle, photo, statistiques -->
-    </section> 
+    <main>
+      <!-- 2. Section Présentation -->
+      <section>
+        <!-- Se présenter simplement -->
+        <div>
+          <h1 class="text-center text-pink-700 text-4xl font-bold mt-10">
+            Happy to see you et bienvenue sur mon portfolio
+          </h1>
+        </div>
+      </section>
 
-    <!-- 4. Section Formation -->
-    <section id="formation">
-      <!--diplômes, certifications, écoles --> 
-    </section>
-
-    <!--Section Expériences Professionnelles -->
-    <section id="experiences">
-
-    </section>
-
-    <!-- 6. Section Compétences -->
-    <section id="competences">
-      <!-- compétences techniques, langages, outils>
-    </section>
-
-    <!-- 7. Section Projets -->
-    <section id="projets">
-      <!-- minimum 2 projets avec descriptions et images -->
-    </section>
-
-    <!-- 8. Section Contact -->
-    <section id="contact">
-      <!-- formulaire de contact-->
-    </section>
+      <!-- 3. Section À propos -->
+      <section id="apropos">
+        <div
+          class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center"
+        >
+          <div class="md:w-1/2">
+            <!-- Placeholder pour ta photo -->
+            <img
+              src="https://via.placeholder.com/300"
+              alt=""
+              class="shadow-lg mx-auto w-64 h-64 object-cover"
+            />
+          </div>
+          <div class="md:w-1/2 mt-6 md:mt-0">
+            <h2 class="text-2xl font-bold">À propos de moi</h2>
+            <p class="text-gray-600 mt-4">
+              Décris ici ton parcours et tes aspirations.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- 9. Footer -->
-    <footer>
-      <!-- réseaux sociaux, liens rapides, copyright -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+        <!-- réseaux sociaux, liens rapides -->
+      </div>
     </footer>
   </body>
 </html>
