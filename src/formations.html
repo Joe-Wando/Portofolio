@@ -1,94 +1,322 @@
 <!doctype html>
+
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formations</title>
     <link rel="stylesheet" href="output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Syne", sans-serif;
+      }
+      .mono {
+        font-family: "DM Mono", monospace;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .blob-tech {
+        position: fixed;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: #00d4aa;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .blob-droit {
+        position: fixed;
+        bottom: 100px;
+        left: -150px;
+        width: 400px;
+        height: 400px;
+        background: #c77dff;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card {
+        animation: fadeUp 0.6s both;
+      }
+      .card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      #Parcours3 {
+        animation: fadeUp 0.6s 0.3s both;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.7);
+        }
+      }
+      .dot {
+        animation: pulse 2s infinite;
+      }
+
+      .card-tech:hover {
+        border-color: rgba(0, 212, 170, 0.5) !important;
+        box-shadow: 0 0 30px rgba(0, 212, 170, 0.1);
+      }
+      .card-rh:hover {
+        border-color: rgba(245, 166, 35, 0.5) !important;
+        box-shadow: 0 0 30px rgba(245, 166, 35, 0.1);
+      }
+      .card-droit:hover {
+        border-color: rgba(199, 125, 255, 0.5) !important;
+        box-shadow: 0 0 30px rgba(199, 125, 255, 0.1);
+      }
+
+      .card-tech::after,
+      .card-rh::after,
+      .card-droit::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        border-radius: 0 0 16px 16px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .card-tech::after {
+        background: linear-gradient(90deg, #00d4aa, transparent);
+      }
+      .card-rh::after {
+        background: linear-gradient(90deg, #f5a623, transparent);
+      }
+      .card-droit::after {
+        background: linear-gradient(90deg, #c77dff, transparent);
+      }
+      .card-tech:hover::after,
+      .card-rh:hover::after,
+      .card-droit:hover::after {
+        opacity: 1;
+      }
+    </style>
   </head>
-  <body class="bg-[#0f172a] text-slate-300">
-    <!-- 1. Header / Navigation -->
-    <header>
+  <body class="bg-[#080c10] text-slate-300 min-h-screen overflow-x-hidden">
+    <div class="blob-tech"></div>
+    <div class="blob-droit"></div>
+
+    <header class="z-10 sticky top-0">
       <nav
-        class="flex flex-row gap-6 p-4 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl justify-center w-fit mx-auto shadow-xl mt-4"
+        class="flex flex-row gap-1 p-1.5 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-full justify-center w-fit mx-auto shadow-xl mt-4"
       >
         <a
           href="index.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase"
           >Accueil</a
         >
         <a
           href="formations.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-[#080c10] bg-slate-100 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase font-semibold"
           >Formations</a
         >
         <a
           href="experiences.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase"
           >Expériences</a
         >
         <a
           href="competences.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase"
           >Compétences</a
         >
         <a
           href="projets.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase"
           >Projets</a
         >
         <a
           href="contact.html"
-          class="text-slate-200 hover:text-pink-500 transition"
+          class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase"
           >Contact</a
         >
       </nav>
     </header>
 
-    <main class="py-20 px-6">
-      <!-- 4. Section Formation -->
+    <main class="relative z-10 py-20 px-6 max-w-4xl mx-auto">
       <section id="formation">
-        <main>
-          <div class="mt-6 text-center">
-            <h2
-              class="text-fuchsia-500 font-black uppercase tracking-[0.3em] text-sm mb-2 text-center"
-            >
-              PARCOURS ACADÉMIQUE
-            </h2>
-          </div>
-          <div class="flex flex-row justify-center gap-12 mt-8">
-            <div
-              id="Parcours1"
-              class="flex flex-col border-2 border-slate-600 text-center p-4 rounded-2xl font-black"
-            >
-              <h1>LICENCE II GENIE INFORMATIQUE</h1>
-              <h1>2026</h1>
-            </div>
-            <div
-              id="Parcours2"
-              class="flex border-2 flex-col text-center border-slate-600 p-4 rounded-2xl font-black"
-            >
-              <h1>LICENCE GESTION DE RESSOURCES HUMAINES</h1>
-              <h1>2025</h1>
-            </div>
-          </div>
+        <div class="text-center mb-16">
           <div
-            id="Parcours3"
-            class="w-fit text-center flex-col mx-auto mt-6 flex border-2 border-slate-600 p-4 rounded-2xl font-black"
+            class="mono flex items-center justify-center gap-3 text-slate-600 text-xs tracking-[0.25em] uppercase mb-4"
           >
-            <h1>LICENCE DROIT PUBLIC</h1>
-            <h1>RECHERCHE FONDAMENTALE</h1>
-            <h1>2024</h1>
+            <span class="w-10 h-px bg-slate-700"></span>
+            Portfolio
+            <span class="w-10 h-px bg-slate-700"></span>
           </div>
-        </main>
+          <h2
+            class="text-4xl md:text-5xl font-extrabold tracking-tight bg-linear-to-br from-slate-100 to-slate-500 bg-clip-text text-transparent"
+          >
+            Parcours Académique
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div
+            id="Parcours1"
+            class="card card-tech relative flex flex-col border border-[rgba(0,212,170,0.18)] bg-[#0e1318] p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+          >
+            <div
+              class="mono flex items-center gap-2 text-[#00d4aa] bg-[rgba(0,212,170,0.1)] border border-[rgba(0,212,170,0.25)] text-[10px] tracking-[0.15em] uppercase px-3 py-1 rounded-full w-fit mb-5"
+            >
+              <span class="dot w-1.5 h-1.5 rounded-full bg-[#00d4aa]"></span>
+              Informatique
+            </div>
+            <h1
+              class="text-lg font-extrabold tracking-tight text-slate-100 leading-snug mb-2"
+            >
+              Licence II<br />Génie Informatique
+            </h1>
+            <p
+              class="mono text-slate-500 text-xs uppercase tracking-widest mb-6"
+            >
+              UNIPRO Dakar
+            </p>
+            <div
+              class="w-full h-px bg-linear-to-r from-[#00d4aa] to-transparent opacity-20 mb-5"
+            ></div>
+            <div class="flex items-end justify-between mt-auto">
+              <span
+                class="mono text-[10px] uppercase tracking-widest text-slate-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg"
+              >
+                Major de Promotion
+              </span>
+              <span
+                class="text-5xl font-extrabold tracking-tighter text-[#00d4aa] leading-none opacity-90"
+                >2026</span
+              >
+            </div>
+          </div>
+
+          <div
+            id="Parcours2"
+            class="card card-rh relative flex flex-col border border-[rgba(245,166,35,0.18)] bg-[#0e1318] p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+          >
+            <div
+              class="mono flex items-center gap-2 text-[#f5a623] bg-[rgba(245,166,35,0.1)] border border-[rgba(245,166,35,0.25)] text-[10px] tracking-[0.15em] uppercase px-3 py-1 rounded-full w-fit mb-5"
+            >
+              <span class="dot w-1.5 h-1.5 rounded-full bg-[#f5a623]"></span>
+              Ressources Humaines
+            </div>
+            <h1
+              class="text-lg font-extrabold tracking-tight text-slate-100 leading-snug mb-2"
+            >
+              Licence<br />Gestion des RH
+            </h1>
+            <p
+              class="mono text-slate-500 text-xs uppercase tracking-widest mb-6"
+            >
+              UNIPRO Dakar
+            </p>
+            <div
+              class="w-full h-px bg-linear-to-r from-[#f5a623] to-transparent opacity-20 mb-5"
+            ></div>
+            <div class="flex items-end justify-between mt-auto">
+              <span
+                class="mono text-[10px] uppercase tracking-widest text-slate-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg"
+              >
+                Licence obtenue
+              </span>
+              <span
+                class="text-5xl font-extrabold tracking-tighter text-[#f5a623] leading-none opacity-90"
+                >2025</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 : Droit Public (pleine largeur) -->
+        <div
+          id="Parcours3"
+          class="card-droit relative flex flex-col md:flex-row md:items-center md:gap-10 border border-[rgba(199,125,255,0.18)] bg-[#0e1318] p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+        >
+          <div class="flex-1">
+            <div
+              class="mono flex items-center gap-2 text-[#c77dff] bg-[rgba(199,125,255,0.1)] border border-[rgba(199,125,255,0.25)] text-[10px] tracking-[0.15em] uppercase px-3 py-1 rounded-full w-fit mb-5"
+            >
+              <span class="dot w-1.5 h-1.5 rounded-full bg-[#c77dff]"></span>
+              Droit Public
+            </div>
+            <h1
+              class="text-lg font-extrabold tracking-tight text-slate-100 leading-snug mb-2"
+            >
+              Licence Droit Public<br />Recherche Fondamentale
+            </h1>
+            <p
+              class="mono text-slate-500 text-xs uppercase tracking-widest mb-6"
+            >
+              Secrétaire Général des Étudiants · Responsable de Classe
+            </p>
+            <div
+              class="w-full h-px bg-linear-to-r from-[#c77dff] to-transparent opacity-20 mb-5"
+            ></div>
+            <span
+              class="mono text-[10px] uppercase tracking-widest text-slate-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg"
+            >
+              Engagement associatif
+            </span>
+          </div>
+          <span
+            class="text-7xl font-extrabold tracking-tighter text-[#c77dff] leading-none opacity-90 mt-6 md:mt-0"
+            >2024</span
+          >
+        </div>
       </section>
     </main>
 
-    <!-- 9. Footer -->
-    <footer class="border-t border-slate-800 text-slate-500 py-12">
+    <!-- Footer -->
+    <footer
+      class="relative z-10 border-t border-slate-800/50 text-slate-600 py-12"
+    >
       <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2026 Mon Portfolio. Tous droits réservés.</p>
-        <!-- réseaux sociaux, liens rapides -->
+        <p class="mono text-xs tracking-widest">
+          &copy; 2026 Mon Portfolio. Tous droits réservés.
+        </p>
       </div>
     </footer>
   </body>
