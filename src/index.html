@@ -5,107 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wando Jonathan | Data Analyst</title>
     <link rel="stylesheet" href="output.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+    <style>
+      body { font-family: 'Syne', sans-serif; }
+      .mono { font-family: 'DM Mono', monospace; }
+
+      body::before {
+        content: '';
+        position: fixed; inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none; z-index: 0;
+      }
+
+      /* Gradient name */
+      .name-gradient {
+        background: linear-gradient(135deg, #00d4aa 0%, #c77dff 50%, #f5a623 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Photo frame */
+      .photo-frame {
+        position: relative;
+        border-radius: 28px;
+        border: 1.5px solid rgba(199,125,255,0.4);
+        overflow: hidden;
+        box-shadow: 0 0 60px rgba(199,125,255,0.15), 0 0 120px rgba(0,212,170,0.08);
+      }
+
+      /* Star sparkle */
+      .sparkle {
+        position: absolute;
+        color: white;
+        font-size: 36px;
+        line-height: 1;
+        animation: spin 8s linear infinite;
+        opacity: 0.7;
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+
+      /* Dot grid decoration */
+      .dot-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 6px);
+        gap: 5px;
+      }
+      .dot-grid span {
+        width: 4px; height: 4px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        display: block;
+      }
+
+      /* Animations */
+      @keyframes fadeUp {
+        from { opacity:0; transform:translateY(30px); }
+        to   { opacity:1; transform:translateY(0); }
+      }
+      @keyframes fadeIn {
+        from { opacity:0; }
+        to   { opacity:1; }
+      }
+      @keyframes pulse {
+        0%,100% { opacity:1; transform:scale(1); }
+        50%      { opacity:0.4; transform:scale(0.7); }
+      }
+
+      .anim-1 { animation: fadeUp 0.7s 0.1s both; }
+      .anim-2 { animation: fadeUp 0.7s 0.25s both; }
+      .anim-3 { animation: fadeUp 0.7s 0.4s both; }
+      .anim-4 { animation: fadeUp 0.7s 0.55s both; }
+      .anim-photo { animation: fadeIn 0.9s 0.2s both; }
+      .dot { animation: pulse 2s infinite; }
+
+      /* Social icons */
+      .social-btn {
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.04);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 14px;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .social-btn:hover {
+        border-color: rgba(199,125,255,0.5);
+        background: rgba(199,125,255,0.1);
+        transform: translateY(-2px);
+      }
+
+      /* About card */
+      .about-card {
+        transition: border-color 0.3s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      .about-card:hover {
+        border-color: rgba(199,125,255,0.4);
+        transform: translateY(-4px);
+      }
+
+      /* Plus decoration */
+      .plus {
+        color: rgba(255,255,255,0.15);
+        font-size: 28px;
+        font-weight: 200;
+        line-height: 1;
+        position: absolute;
+      }
+    </style>
   </head>
-  <body class="bg-[#0f172a] text-slate-300 font-sans">
-    <header>
-      <nav
-        class="flex flex-row gap-6 p-3 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl justify-center w-fit mx-auto shadow-xl mt-6"
-      >
-        <a
-          href="index.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Accueil</a
-        >
-        <a
-          href="formations.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Formations</a
-        >
-        <a
-          href="experiences.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Expériences</a
-        >
-        <a
-          href="competences.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Compétences</a
-        >
-        <a
-          href="projets.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Projets</a
-        >
-        <a
-          href="contact.html"
-          class="text-slate-200 hover:text-pink-500 transition duration-300"
-          >Contact</a
-        >
+  <body class="bg-[#080c10] text-slate-300 min-h-screen overflow-x-hidden">
+
+    <header class="z-10 sticky top-0">
+      <nav class="flex flex-row gap-1 p-1.5 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-full justify-center w-fit mx-auto shadow-xl mt-4">
+        <a href="index.html"       class="mono text-[#080c10] bg-slate-100 px-5 py-2 rounded-full text-xs tracking-widest uppercase font-semibold">Accueil</a>
+        <a href="formations.html"  class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase">Formations</a>
+        <a href="experiences.html" class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase">Expériences</a>
+        <a href="competences.html" class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase">Compétences</a>
+        <a href="projets.html"     class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase">Projets</a>
+        <a href="contact.html"     class="mono text-slate-400 hover:text-slate-100 hover:bg-white/5 transition px-5 py-2 rounded-full text-xs tracking-widest uppercase">Contact</a>
       </nav>
     </header>
 
-    <main class="container mx-auto px-6">
-      <section class="mt-20">
-        <p
-          class="text-center text-fuchsia-500/80 text-sm font-medium mb-12 tracking-wide"
-        >
-          Happy to meet you et bienvenue sur mon portfolio
-        </p>
+    <main class="relative z-10 container mx-auto px-6 max-w-5xl">
+      <section class="min-h-[85vh] flex flex-col justify-center py-12">
 
-        <div class="flex items-center justify-between gap-4 mt-20">
-          <div class="flex flex-col">
-            <span
-              class="text-sky-400 font-extralight uppercase tracking-[0.4em] text-xs mb-2"
-            >
-              Data Analyst
-            </span>
+        <div class="flex items-center justify-between gap-8 relative">
 
-            <h1
-              class="text-7xl md:text-9xl font-black text-white uppercase leading-[0.8] tracking-tighter"
-            >
-              WANDO<br />
-              Jonathan
+          <div class="sparkle" style="top: -20px; left: 60%;">✦</div>
+          <div class="plus" style="right: -20px; top: 40%;">+</div>
+
+          <div class="flex flex-col flex-1 max-w-lg">
+
+            <div class="anim-1 mono inline-flex items-center gap-2 text-[#00d4aa] bg-[rgba(0,212,170,0.08)] border border-[rgba(0,212,170,0.2)] text-[10px] tracking-[0.2em] uppercase px-4 py-2 rounded-full w-fit mb-6">
+              <span class="dot w-1.5 h-1.5 rounded-full bg-[#00d4aa] inline-block"></span>
+              Data Analyst · Dakar, Sénégal
+            </div>
+
+      
+            <h1 class="anim-2 font-extrabold uppercase leading-[0.88] tracking-tighter mb-6" style="font-size: clamp(56px, 9vw, 96px);">
+              <span class="name-gradient">DIPO<br/>WANDO</span>
             </h1>
-            <div class="mt-8 flex items-center gap-6">
-              <p
-                class="text-slate-400 italic font-light border-l-2 border-fuchsia-500 pl-4"
-              >
-                "J'améliore votre regard de l'informatique"
+
+         
+            <div class="anim-3 flex items-center gap-3 mb-6">
+              <div class="w-0.5 h-8 bg-[#c77dff]"></div>
+              <p class="text-slate-400 italic font-light text-sm leading-relaxed">
+                "J'améliore votre regard<br/>de l'informatique"
               </p>
             </div>
-            <div class="h-2 w-20 bg-sky-500 mt-8 rounded-full"></div>
+
+   
+            <p class="anim-3 text-slate-500 text-sm font-light leading-relaxed mb-8 max-w-sm">
+              Étudiant en génie informatique, spécialiste en gestion des ressources humaines avec un solide bagage en droit et en développement web.
+            </p>
+
+            <div class="anim-4 flex items-center gap-3 mb-8">
+              <a href="mailto:jonathan6wando@gmail.com" class="social-btn" title="Email">✉</a>
+              <a href="#" class="social-btn" title="LinkedIn">in</a>
+              <a href="#" class="social-btn" title="GitHub">⌥</a>
+              <a href="tel:+221785268208" class="social-btn" title="Téléphone">☎</a>
+            </div>
+
+            <div class="anim-4 flex gap-3">
+              <a href="projets.html" class="mono text-[10px] uppercase tracking-widest bg-[#00d4aa] text-[#080c10] font-bold px-6 py-3 rounded-full hover:opacity-80 transition">
+                Voir mes projets →
+              </a>
+              <a href="contact.html" class="mono text-[10px] uppercase tracking-widest border border-slate-700 text-slate-300 px-6 py-3 rounded-full hover:border-slate-500 hover:text-white transition">
+                Me contacter
+              </a>
+            </div>
+
           </div>
 
-          <div
-            class="w-64 h-80 bg-slate-800 rounded-3xl border-2 border-fuchsia-500 overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition duration-500"
-          >
-            <img
-              src="WhatsApp Image 2025-08-07 à 08.24.25_93974dee.jpg"
-              alt="Ma photo de profil"
-              class="w-full h-full object-cover"
-            />
+
+          <div class="anim-photo shrink-0 relative">
+       
+            <div class="dot-grid absolute -left-6 top-1/2 -translate-y-1/2 z-10">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="photo-frame w-56 h-72 md:w-72 md:h-105">
+              <img
+                src="bras.jpeg"
+                alt="Wando Jonathan"
+                class="w-full h-full object-cover"
+              />
+
+              <div class="absolute inset-0 bg-linear-to-t from-[#080c10]/60 via-transparent to-transparent"></div>
+            </div>
           </div>
+
         </div>
 
-        <div class="mt-24 max-w-lg">
-          <h2
-            class="text-xs font-black uppercase tracking-widest text-fuchsia-500 mb-2"
-          >
+ 
+        <div class="anim-4 about-card mt-16 border border-[rgba(199,125,255,0.15)] bg-[#0e1318] rounded-2xl p-8 max-w-2xl">
+          <div class="mono flex items-center gap-2 text-[#c77dff] text-[10px] tracking-[0.2em] uppercase mb-4">
+            <span class="dot w-1.5 h-1.5 rounded-full bg-[#c77dff] inline-block"></span>
             Storytelling
-          </h2>
-          <h3 class="text-3xl font-bold text-white mb-4">À propos de moi</h3>
-          <p class="text-slate-400 leading-relaxed text-lg font-light">
-            Décrire ici ce qui m'a motivé à explorer le monde de la donnée et
-            mon parcours en informatique au Sénégal.
+          </div>
+          <h3 class="text-xl font-extrabold text-slate-100 tracking-tight mb-3">À propos de moi</h3>
+          <div class="w-full h-px bg-linear-to-r from-[#c77dff] to-transparent opacity-20 mb-4"></div>
+          <p class="text-slate-400 leading-relaxed font-light text-sm">
+            Avant toute chose, faisons connaissance, je suis étudiant en 2ᵉ année de génie informatique à UNIPRO Dakar, je combine des compétences en développement web, en gestion des ressources humaines et en droit. Passionné par la data et l'informatique, je cherche à mettre mes compétences pluridisciplinaires au service de projets innovants.
           </p>
         </div>
+
       </section>
     </main>
 
-    <footer class="mt-32 border-t border-slate-800 py-12 text-center">
-      <p class="text-slate-500 text-sm">
-        &copy; 2026 Mon Portfolio. Tous droits réservés.
-      </p>
+    <footer class="relative z-10 border-t border-slate-800/50 text-slate-600 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <p class="mono text-xs tracking-widest">&copy; 2026 Wando Jonathan. Tous droits réservés.</p>
+      </div>
     </footer>
+
   </body>
-</html>
+</html
