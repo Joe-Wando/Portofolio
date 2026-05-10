@@ -6,9 +6,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="bg-[#0b0f19] text-white">
+  <body class="bg-[#0b0f14] text-white">
     <header
-      class="fixed top-0 left-0 w-full bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800"
+      class="fixed top-0 left-0 w-full bg-[#0b0f14]/80 backdrop-blur-md border-b border-gray-800 z-50"
     >
       <div
         class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4"
@@ -16,22 +16,52 @@
         <h1 class="text-xl font-bold text-green-400">MonPortfolio</h1>
 
         <nav class="space-x-6 hidden md:block">
-          <a href="#" class="hover:text-green-400">Accueil</a>
-          <a href="#" class="hover:text-green-400">Compétences</a>
-          <a href="#" class="hover:text-green-400">Projets</a>
-          <a href="#" class="hover:text-green-400">Contact</a>
+          <a href="index.html" class="hover:text-green-400">Accueil</a>
+          <a href="competences.html" class="text-green-400">Compétences</a>
+          <a href="projets.html" class="hover:text-green-400">Projets</a>
+          <a href="contact.html" class="hover:text-green-400">Contact</a>
         </nav>
       </div>
     </header>
 
-    <section class="h-screen flex items-center justify-center text-center px-6">
-      <div>
-        <h2 class="text-4xl font-bold mb-4">Mes compétences</h2>
+    <main class="pt-24">
+      <section
+        class="h-screen flex items-center justify-center text-center px-6"
+      >
+        <div>
+          <h2 class="text-4xl font-bold mb-4">Mes compétences</h2>
+          <p class="text-gray-400">
+            Voici un aperçu de mes compétences en informatique.
+          </p>
+        </div>
+      </section>
 
-        <p class="text-gray-400">
-          Voici un aperçu de mes compétences en data analyse.
-        </p>
-      </div>
-    </section>
+      <section class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold mb-10 text-center">
+            Compétences techniques
+          </h2>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-[#111827] p-6 rounded-2xl border border-gray-700">
+              <h3 class="text-xl font-semibold mb-3">Programmation</h3>
+              <p class="text-gray-400 text-sm">
+                HTML, CSS, JavaScript, Python, Java, C
+              </p>
+            </div>
+
+            <div class="bg-[#111827] p-6 rounded-2xl border border-gray-700">
+              <h3 class="text-xl font-semibold mb-3">Analyse de données</h3>
+              <p class="text-gray-400 text-sm">Pandas, NumPy</p>
+            </div>
+
+            <div class="bg-[#111827] p-6 rounded-2xl border border-gray-700">
+              <h3 class="text-xl font-semibold mb-3">Systèmes</h3>
+              <p class="text-gray-400 text-sm">Windows, Linux (Ubuntu)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
