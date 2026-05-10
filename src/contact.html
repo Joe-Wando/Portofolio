@@ -2,62 +2,31 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
-    <link rel="stylesheet" href="output.css" />
   </head>
-  <body class="bg-[#0f172a] text-slate-300">
-    <!-- 1. Header / Navigation -->
+  <body>
     <header>
-      <nav
-        class="flex flex-row gap-6 p-4 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl justify-center w-fit mx-auto shadow-xl mt-4"
-      >
-        <a
-          href="index.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Accueil</a
-        >
-        <a
-          href="formations.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Formations</a
-        >
-        <a
-          href="experiences.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Expériences</a
-        >
-        <a
-          href="competences.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Compétences</a
-        >
-        <a
-          href="projets.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Projets</a
-        >
-        <a
-          href="contact.html"
-          class="text-slate-200 hover:text-pink-500 transition"
-          >Contact</a
-        >
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </header>
-
-    <main class="py-20 px-6">
-      <!-- 8. Section Contact -->
+    <main>
       <section id="contact">
-        <!-- formulaire de contact-->
+        <h2>Me Contacter</h2>
+        <div>
+          <p>Email: jonathan6wando@gmail.com</p>
+          <p>LinkedIn: https://www.linkedin.com/feed/</p>
+          <p>Localisation: Dakar, Sénégal</p>
+        </div>
+        <form>
+          <input type="text" placeholder="Votre nom complet" />
+          <input type="email" placeholder="votre@email.com" />
+          <textarea placeholder="Votre message..."></textarea>
+          <button type="submit">Envoyer →</button>
+        </form>
       </section>
     </main>
-
-    <!-- 9. Footer -->
-    <footer class="border-t border-slate-800 text-slate-500 py-12">
-      <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2026 Mon Portfolio. Tous droits réservés.</p>
-        <!-- réseaux sociaux, liens rapides -->
-      </div>
-    </footer>
   </body>
 </html>
