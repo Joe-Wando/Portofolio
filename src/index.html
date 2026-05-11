@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Compétences</title>
+    <title>Accueil</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -16,20 +16,53 @@
         <h1 class="text-xl font-bold text-green-400">Joe-Wando</h1>
 
         <nav class="space-x-6 hidden md:block">
-          <a href="index.html" class="hover:text-green-400">Accueil</a>
+          <a href="index.html" class="text-green-400">Accueil</a>
           <a href="formations.html" class="hover:text-green-400">Formations</a>
           <a href="competences.html" class="hover:text-green-400"
             >Compétences</a
           >
           <a href="projets.html" class="hover:text-green-400">Projets</a>
-          <a href="contact.html" class="text-green-400">Contact</a>
+          <a href="contact.html" class="hover:text-green-400">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main>
-    
+    <main class="flex-1 flex items-center justify-center px-6 pt-24">
+      <section
+        class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-10"
+      >
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Profil technique <span class="text-green-400">polyvalent</span>
+          </h2>
 
+          <p class="text-gray-400 mb-8 text-lg">
+            Je combine développement web, maintenance informatique et support
+            technique pour créer des solutions fiables, performantes et adaptées
+            aux besoins.
+          </p>
+
+          <div class="flex justify-center md:justify-start gap-4">
+            <a
+              href="projets.html"
+              class="bg-green-400 text-black px-6 py-3 rounded-lg font-semibold hover:opacity-80 transition"
+            >
+              Voir mes projets
+            </a>
+
+            <a
+              href="contact.html"
+              class="border border-green-400 px-6 py-3 rounded-lg hover:bg-green-400 hover:text-black transition"
+            >
+              Me contacter
+            </a>
+          </div>
+        </div>
+
+        <div class="flex-1 flex justify-center">
+          <div class="w-64 h-64 bg-green-400/20 rounded-full blur-3xl"></div>
+        </div>
+      </section>
     </main>
 
     <footer class="bg-[#0f172a] border-t border-gray-800 py-8">
@@ -47,5 +80,3 @@
     </footer>
   </body>
 </html>
-<!doctype html>
-<html
