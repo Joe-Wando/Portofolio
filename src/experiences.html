@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expériences</title>
+    <title>CV Joe-wando</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -16,72 +16,97 @@
       >
         <h1 class="text-xl font-bold text-green-400">Joe-Wando</h1>
 
-        <nav class="space-x-6 hidden md:block">
+        <nav class="hidden md:flex gap-6 text-sm">
           <a href="index.html" class="hover:text-green-400">Accueil</a>
           <a href="formations.html" class="hover:text-green-400">Formations</a>
           <a href="competences.html" class="hover:text-green-400"
             >Compétences</a
           >
+          <a href="experiences.html" class="text-green-400">Expérience</a>
           <a href="projets.html" class="hover:text-green-400">Projets</a>
           <a href="contact.html" class="hover:text-green-400">Contact</a>
-          <a href="experience.html" class="text-green-400">Expérience</a>
         </nav>
+
+        <button id="menu-btn" class="md:hidden text-2xl text-white">☰</button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden flex flex-col items-center gap-6 py-6 bg-[#0b0f14] border-t border-gray-800"
+      >
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="competences.html">Compétences</a>
+        <a href="experiences.html" class="text-green-400">Expérience</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-24">
-      <section>
-        <h2 class="text-xl font-semibold mb-6">
-          Mes expériences professionnelles
-        </h2>
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+      <h2 class="text-3xl font-bold mb-12 text-center">
+        Expériences professionnelles
+      </h2>
 
-        <div class="space-y-6">
-          <div class="bg-gray-900 p-6 rounded-lg">
-            <h3 class="text-lg font-bold">Enseignant</h3>
-            <p class="text-gray-400 text-sm">2024 - 2025</p>
-            <p class="mt-2 text-gray-300">
-              Formation et accompagnement d’élèves. Transmission de
-              connaissances et suivi pédagogique.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 p-6 rounded-lg">
-            <h3 class="text-lg font-bold">Téléconseiller</h3>
-            <p class="text-gray-400 text-sm">2023 - 2024</p>
-            <p class="mt-2 text-gray-300">
-              Gestion des appels clients, traitement des demandes et saisie des
-              informations dans les systèmes.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 p-6 rounded-lg">
-            <h3 class="text-lg font-bold">Stage en entreprise</h3>
-            <p class="text-gray-400 text-sm">2023</p>
-            <p class="mt-2 text-gray-300">
-              Découverte du fonctionnement de l’entreprise, participation aux
-              tâches administratives et techniques.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 p-6 rounded-lg">
-            <h3 class="text-lg font-bold">Support informatique</h3>
-            <p class="text-gray-400 text-sm">Projet / Personnel</p>
-            <p class="mt-2 text-gray-300">
-              Maintenance de matériel informatique, résolution de problèmes
-              techniques et assistance aux utilisateurs.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 p-6 rounded-lg">
-            <h3 class="text-lg font-bold">Développement web</h3>
-            <p class="text-gray-400 text-sm">Projets personnels</p>
-            <p class="mt-2 text-gray-300">
-              Création de sites web modernes avec HTML, CSS, JavaScript et
-              Tailwind CSS.
-            </p>
-          </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div
+          class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-green-400 transition"
+        >
+          <h3 class="text-lg font-bold text-green-400">Agent de sécurité</h3>
+          <p class="text-sm text-gray-400 mb-3">
+            Falcon Security • 2024 - 2025
+          </p>
+          <ul class="text-gray-300 space-y-1 text-sm">
+            <li>Surveillance des accès</li>
+            <li>Gestion des incidents</li>
+            <li>Rondes de sécurité</li>
+          </ul>
         </div>
-      </section>
+
+        <div
+          class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-green-400 transition"
+        >
+          <h3 class="text-lg font-bold text-green-400">Enseignant</h3>
+          <p class="text-sm text-gray-400 mb-3">2024 - 2025</p>
+          <ul class="text-gray-300 space-y-1 text-sm">
+            <li>Animation des cours</li>
+            <li>Suivi des élèves</li>
+            <li>Encadrement pédagogique</li>
+          </ul>
+        </div>
+
+        <div
+          class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-green-400 transition"
+        >
+          <h3 class="text-lg font-bold text-green-400">Téléconseiller</h3>
+          <p class="text-sm text-gray-400 mb-3">2023 - 2024</p>
+          <ul class="text-gray-300 space-y-1 text-sm">
+            <li>Gestion des appels</li>
+            <li>Assistance client</li>
+            <li>Suivi des dossiers</li>
+          </ul>
+        </div>
+
+        <div
+          class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-green-400 transition"
+        >
+          <h3 class="text-lg font-bold text-green-400">Stage informatique</h3>
+          <p class="text-sm text-gray-400 mb-3">2023</p>
+          <ul class="text-gray-300 space-y-1 text-sm">
+            <li>Maintenance des postes</li>
+            <li>Support utilisateur</li>
+            <li>Résolution de pannes</li>
+          </ul>
+        </div>
+      </div>
     </main>
+
+    <script>
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>
