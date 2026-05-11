@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Compétences</title>
+    <title>Formations</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -15,21 +15,73 @@
       >
         <h1 class="text-xl font-bold text-green-400">Joe-Wando</h1>
 
-        <nav class="space-x-6 hidden md:block">
+        <nav class="hidden md:flex gap-6 text-sm">
           <a href="index.html" class="hover:text-green-400">Accueil</a>
-          <a href="formations.html" class="hover:text-green-400">Formations</a>
+          <a href="formations.html" class="text-green-400">Formations</a>
           <a href="competences.html" class="hover:text-green-400"
             >Compétences</a
           >
+          <a href="experiences.html" class="hover:text-green-400">Expérience</a>
           <a href="projets.html" class="hover:text-green-400">Projets</a>
-          <a href="contact.html" class="text-green-400">Contact</a>
+          <a href="contact.html" class="hover:text-green-400">Contact</a>
         </nav>
+
+        <button id="menu-btn" class="md:hidden text-2xl text-white">☰</button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden flex flex-col items-center gap-6 py-6 bg-[#0b0f14] border-t border-gray-800"
+      >
+        <a href="index.html">Accueil</a>
+        <a href="formations.html" class="text-green-400">Formations</a>
+        <a href="competences.html">Compétences</a>
+        <a href="experiences.html">Expérience</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
       </div>
     </header>
 
-    <main>
-    
+    <main class="flex-grow pt-32 pb-16 px-6">
+      <section class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Formations</h2>
 
+        <div class="flex flex-col gap-6">
+          <div
+            class="bg-[#111827] p-6 rounded-xl border border-gray-800 hover:border-green-400 transition"
+          >
+            <h3 class="text-lg font-bold text-green-400">
+              Licence II Génie Informatique
+            </h3>
+            <p class="text-sm text-gray-400">2026 - Aujourd’hui</p>
+          </div>
+
+          <div
+            class="bg-[#111827] p-6 rounded-xl border border-gray-800 hover:border-green-400 transition"
+          >
+            <h3 class="text-lg font-bold text-green-400">
+              Licence Gestion des Ressources Humaines
+            </h3>
+            <p class="text-sm text-gray-400">Univers Professionnel</p>
+          </div>
+
+          <div
+            class="bg-[#111827] p-6 rounded-xl border border-gray-800 hover:border-green-400 transition"
+          >
+            <h3 class="text-lg font-bold text-green-400">
+              Licence I Génie Informatique
+            </h3>
+            <p class="text-sm text-gray-400">2024 - 2025 • Major & Délégué</p>
+          </div>
+
+          <div
+            class="bg-[#111827] p-6 rounded-xl border border-gray-800 hover:border-green-400 transition"
+          >
+            <h3 class="text-lg font-bold text-green-400">Baccalauréat A4</h3>
+            <p class="text-sm text-gray-400">2020 • Pointe-Noire</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="bg-[#0f172a] border-t border-gray-800 py-8">
@@ -45,7 +97,13 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>
-<!doctype html>
-<html
