@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À Propos - Joe Wando</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .gradient-text {
+        background: linear-gradient(to right, #4ade80, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .about-image {
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .about-image:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+    </style>
+  </head>
+  <body class="bg-[#0a0f1c] text-white flex flex-col min-h-screen">
+    <nav
+      class="fixed top-0 left-0 right-0 bg-[#0a0f1c]/95 backdrop-blur-lg border-b border-gray-800 z-50"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-emerald-500/30"
+          >
+            JW
+          </div>
+          <h1 class="text-2xl font-bold tracking-tighter">Joe Wando</h1>
+        </div>
+
+        <div class="hidden md:flex items-center gap-9 text-sm font-medium">
+          <a href="index.html" class="hover:text-emerald-400 transition-colors"
+            >Accueil</a
+          >
+          <a
+            href="formations.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Formations</a
+          >
+          <a
+            href="competences.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Compétences</a
+          >
+          <a
+            href="experiences.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Expériences</a
+          >
+          <a
+            href="projets.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Projets</a
+          >
+          <a href="A_propos.html" class="text-emerald-400 font-semibold"
+            >À Propos</a
+          >
+          <a
+            href="contact.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Contact</a
+          >
+        </div>
+
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden text-3xl text-gray-300 hover:text-white transition"
+        >
+          ☰
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[#0a0f1c] border-t border-gray-800 py-8"
+      >
+        <div class="flex flex-col items-center gap-6 text-lg font-medium">
+          <a href="index.html" class="hover:text-emerald-400">Accueil</a>
+          <a href="formations.html" class="hover:text-emerald-400"
+            >Formations</a
+          >
+          <a href="competences.html" class="hover:text-emerald-400"
+            >Compétences</a
+          >
+          <a href="experiences.html" class="hover:text-emerald-400"
+            >Expériences</a
+          >
+          <a href="projets.html" class="hover:text-emerald-400">Projets</a>
+          <a href="A_propos.html" class="text-emerald-400">À Propos</a>
+          <a href="contact.html" class="hover:text-emerald-400">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-28 pb-20 flex-grow">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+          <div class="md:col-span-5">
+            <div class="sticky top-28">
+              <div class="relative">
+                <img
+                  src="bras.jpeg"
+                  alt="Jonathan Wando"
+                  class="about-image w-full rounded-3xl shadow-2xl border border-gray-700"
+                />
+                <div
+                  class="absolute -bottom-6 -right-6 bg-[#111827] border border-emerald-500 rounded-2xl p-6 shadow-xl"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="text-4xl">CG</div>
+                    <div>
+                      <p class="text-emerald-400 font-semibold">Congolais</p>
+                      <p class="text-sm text-gray-400">Basé au Sénégal</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-7 space-y-10">
+            <div>
+              <h2 class="text-5xl font-bold gradient-text mb-6">
+                Bonjour, je suis Jonathan Wando
+              </h2>
+              <p class="text-xl text-gray-300 leading-relaxed">
+                Passionné par la technologie, je suis un développeur web junior
+                en formation à UNIPRO. J’aime transformer des idées en solutions
+                digitales concrètes.
+              </p>
+            </div>
+
+            <div
+              class="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed"
+            >
+              <p>
+                Après une reconversion professionnelle, j’ai découvert ma
+                véritable passion : le développement web et la cybersécurité.
+                J’ai acquis des compétences solides en HTML, CSS, JavaScript,
+                Tailwind ainsi qu’en gestion de systèmes et support
+                informatique.
+              </p>
+              <p>
+                Mon objectif est clair : continuer à progresser en tant que
+                développeur full-stack tout en apportant de la valeur à travers
+                des projets concrets et bien conçus.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 pt-8 border-t border-gray-800">
+              <div>
+                <h4
+                  class="text-emerald-400 font-semibold mb-4 flex items-center gap-2"
+                >
+                  <i class="fas fa-heart"></i> Ce que j’aime
+                </h4>
+                <ul class="space-y-3 text-gray-400">
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Créer des interfaces
+                    modernes
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Résoudre des
+                    problèmes complexes
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Apprendre de
+                    nouvelles technologies
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Football &amp;
+                    Musique
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4
+                  class="text-emerald-400 font-semibold mb-4 flex items-center gap-2"
+                >
+                  <i class="fas fa-bullseye"></i> Mes objectifs
+                </h4>
+                <ul class="space-y-3 text-gray-400">
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Devenir développeur
+                    Full Stack
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Maîtriser la
+                    cybersécurité
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Contribuer à des
+                    projets open source
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-emerald-400">→</span> Créer ma propre
+                    startup
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-8">
+              <a
+                href="projets.html"
+                class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-2xl transition flex items-center gap-3"
+              >
+                Voir mes projets
+                <i class="fas fa-arrow-right"></i>
+              </a>
+
+              <a
+                href="contact.html"
+                class="px-8 py-4 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 font-semibold rounded-2xl transition"
+              >
+                Discutons ensemble
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-[#02060f] border-t border-gray-800 py-12 mt-auto">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-gray-500 mb-6">
+          © 2026 Joe Wando - Tous droits réservés
+        </p>
+        <div class="flex justify-center gap-8 text-2xl">
+          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="mailto:jonathan6wando@gmail.com"
+            class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>
