@@ -2,65 +2,244 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Joe Wando</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .input-field {
+        transition: all 0.4s ease;
+      }
+      .input-field:focus {
+        border-color: rgb(16 185 129);
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+        transform: translateY(-2px);
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #4ade80, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
-
-  <body class="bg-[#0b0f14] text-white">
-    <header
-      class="fixed top-0 left-0 w-full bg-[#0b0f14]/80 backdrop-blur-md border-b border-gray-800 z-50"
+  <body class="bg-[#0a0f1c] text-white flex flex-col min-h-screen">
+    <nav
+      class="fixed top-0 left-0 right-0 bg-[#0a0f1c]/95 backdrop-blur-lg border-b border-gray-800 z-50"
     >
       <div
-        class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4"
+        class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <h1 class="text-xl font-bold text-green-400">Joe-Wando</h1>
-
-        <nav class="space-x-6 hidden md:block">
-          <a href="index.html" class="hover:text-green-400">Accueil</a>
-          <a href="formations.html" class="hover:text-green-400">Formations</a>
-          <a href="competences.html" class="hover:text-green-400"
-            >Compétences</a
+        <div class="flex items-center gap-3">
+          <div
+            class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-emerald-500/30"
           >
-          <a href="projets.html" class="hover:text-green-400">Projets</a>
-          <a href="contact.html" class="text-green-400">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="pt-32 pb-20">
-      <section class="container mx-auto px-6">
-        <h2 class="text-3xl font-extrabold mb-10">Contact</h2>
-
-        <div class="mb-10 space-y-2 text-slate-400">
-          <p>Email : wando@email.com</p>
-          <p>LinkedIn : linkedin.com/in/wando</p>
+            JW
+          </div>
+          <h1 class="text-2xl font-bold tracking-tighter">Joe Wando</h1>
         </div>
 
-        <form class="max-w-xl space-y-4">
-          <input
-            type="text"
-            placeholder="Nom"
-            class="w-full p-3 rounded-lg bg-[#0e1318] border border-white/10 text-white focus:outline-none focus:border-[#00d4aa]"
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            class="w-full p-3 rounded-lg bg-[#0e1318] border border-white/10 text-white focus:outline-none focus:border-[#00d4aa]"
-          />
-
-          <textarea
-            placeholder="Message"
-            class="w-full p-3 rounded-lg bg-[#0e1318] border border-white/10 text-white focus:outline-none focus:border-[#00d4aa]"
-          ></textarea>
-
-          <button
-            class="px-6 py-3 bg-[#00d4aa] text-black font-bold rounded-lg hover:scale-105 hover:shadow-lg transition duration-300"
+        <div class="hidden md:flex items-center gap-9 text-sm font-medium">
+          <a href="index.html" class="hover:text-emerald-400 transition-colors"
+            >Accueil</a
           >
-            Envoyer
-          </button>
-        </form>
-      </section>
+          <a
+            href="formations.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Formations</a
+          >
+          <a
+            href="competences.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Compétences</a
+          >
+          <a
+            href="experiences.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Expériences</a
+          >
+          <a
+            href="projets.html"
+            class="hover:text-emerald-400 transition-colors"
+            >Projets</a
+          >
+          <a
+            href="A_propos.html"
+            class="hover:text-emerald-400 transition-colors"
+            >À Propos</a
+          >
+          <a href="contact.html" class="text-emerald-400 font-semibold"
+            >Contact</a
+          >
+        </div>
+
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden text-3xl text-gray-300 hover:text-white"
+        >
+          ☰
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[#0a0f1c] border-t border-gray-800 py-6"
+      >
+        <div class="flex flex-col items-center gap-6 text-lg">
+          <a href="index.html" class="hover:text-emerald-400 transition"
+            >Accueil</a
+          >
+          <a href="formations.html" class="hover:text-emerald-400 transition"
+            >Formations</a
+          >
+          <a href="competences.html" class="hover:text-emerald-400 transition"
+            >Compétences</a
+          >
+          <a href="experiences.html" class="hover:text-emerald-400 transition"
+            >Expériences</a
+          >
+          <a href="projets.html" class="hover:text-emerald-400 transition"
+            >Projets</a
+          >
+          <a href="A_propos.html" class="hover:text-emerald-400 transition"
+            >À Propos</a
+          >
+          <a href="contact.html" class="text-emerald-400">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-28 pb-20 flex-grow">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-bold gradient-text mb-4">Contactez-moi</h2>
+          <p class="text-gray-400 text-lg">
+            N’hésitez pas à me laisser un message
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-12">
+          <div class="md:col-span-2 space-y-8">
+            <div>
+              <h3
+                class="text-emerald-400 text-sm font-medium tracking-widest mb-4"
+              >
+                INFORMATIONS
+              </h3>
+              <div class="space-y-6">
+                <div class="flex items-start gap-5">
+                  <div
+                    class="w-11 h-11 bg-emerald-500/10 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fas fa-envelope text-2xl text-emerald-400"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-400 text-sm">Email</p>
+                    <a
+                      href="mailto:jonathan6wando@gmail.com"
+                      class="text-white hover:text-emerald-400 transition"
+                      >jonathan6wando@gmail.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-5">
+                  <div
+                    class="w-11 h-11 bg-emerald-500/10 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fab fa-linkedin-in text-2xl text-emerald-400"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-400 text-sm">LinkedIn</p>
+                    <a
+                      href="https://linkedin.com/in/joe-wando"
+                      target="_blank"
+                      class="text-white hover:text-emerald-400 transition"
+                      >linkedin.com/in/joe-wando</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800">
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Ouvert aux opportunités en développement web, support
+                informatique et cybersécurité.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:col-span-3">
+            <form class="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Votre nom"
+                  class="input-field w-full px-6 py-5 bg-[#111827] border border-gray-700 rounded-3xl text-white placeholder-gray-500 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  class="input-field w-full px-6 py-5 bg-[#111827] border border-gray-700 rounded-3xl text-white placeholder-gray-500 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <textarea
+                  placeholder="Votre message..."
+                  rows="6"
+                  class="input-field w-full px-6 py-5 bg-[#111827] border border-gray-700 rounded-3xl text-white placeholder-gray-500 focus:outline-none resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-lg rounded-3xl transition-all duration-300 hover:scale-[1.02]"
+              >
+                Envoyer le message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <footer class="bg-[#02060f] border-t border-gray-800 py-12 mt-auto">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-gray-500 mb-6">
+          © 2026 Joe Wando - Tous droits réservés
+        </p>
+        <div class="flex justify-center gap-8 text-2xl">
+          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="mailto:jonathan6wando@gmail.com"
+            class="text-gray-400 hover:text-emerald-400 transition"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
   </body>
 </html>
