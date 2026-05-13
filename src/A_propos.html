@@ -27,6 +27,22 @@
       .about-image:hover {
         transform: scale(1.05) rotate(2deg);
       }
+
+      .lang-card,
+      .stat-card,
+      .goal-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .lang-card:hover,
+      .stat-card:hover,
+      .goal-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-hover {
+        border-color: rgba(16, 185, 129, 0.3) !important;
+      }
     </style>
   </head>
   <body class="bg-[#0a0f1c] text-white flex flex-col min-h-screen">
@@ -81,159 +97,290 @@
 
         <button
           onclick="toggleMobileMenu()"
-          class="md:hidden text-3xl text-gray-300 hover:text-white transition"
+          class="md:hidden p-2 hover:bg-gray-800 rounded-xl transition-colors"
         >
-          ☰
+          <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
 
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-[#0a0f1c] border-t border-gray-800 py-8"
+        class="hidden md:hidden bg-[#0a0f1c]/95 border-t border-gray-800"
       >
-        <div class="flex flex-col items-center gap-6 text-lg font-medium">
-          <a href="index.html" class="hover:text-emerald-400">Accueil</a>
-          <a href="formations.html" class="hover:text-emerald-400"
-            >Formations</a
-          >
-          <a href="competences.html" class="hover:text-emerald-400"
-            >Compétences</a
-          >
-          <a href="experiences.html" class="hover:text-emerald-400"
-            >Expériences</a
-          >
-          <a href="projets.html" class="hover:text-emerald-400">Projets</a>
-          <a href="A_propos.html" class="text-emerald-400">À Propos</a>
-          <a href="contact.html" class="hover:text-emerald-400">Contact</a>
+        <div class="max-w-6xl mx-auto px-6 py-8">
+          <div class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="hover:text-emerald-400 py-2">Accueil</a>
+            <a href="formations.html" class="hover:text-emerald-400 py-2"
+              >Formations</a
+            >
+            <a href="competences.html" class="hover:text-emerald-400 py-2"
+              >Compétences</a
+            >
+            <a href="experiences.html" class="hover:text-emerald-400 py-2"
+              >Expériences</a
+            >
+            <a href="projets.html" class="hover:text-emerald-400 py-2"
+              >Projets</a
+            >
+            <a href="A_propos.html" class="text-emerald-400 font-semibold py-2"
+              >À Propos</a
+            >
+            <a href="contact.html" class="hover:text-emerald-400 py-2"
+              >Contact</a
+            >
+          </div>
         </div>
       </div>
     </nav>
 
-    <main class="pt-28 pb-20 flex-grow">
+    <main class="flex-1 pt-28 pb-20">
       <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-12 gap-16 items-center">
-          <div class="md:col-span-5">
-            <div class="sticky top-28">
-              <div class="relative">
-                <img
-                  src="bras.jpeg"
-                  alt="Jonathan Wando"
-                  class="about-image w-full rounded-3xl shadow-2xl border border-gray-700"
-                />
-                <div
-                  class="absolute -bottom-6 -right-6 bg-[#111827] border border-emerald-500 rounded-2xl p-6 shadow-xl"
-                >
-                  <div class="flex items-center gap-4">
-                    <div class="text-4xl">CG</div>
-                    <div>
-                      <p class="text-emerald-400 font-semibold">Congolais</p>
-                      <p class="text-sm text-gray-400">Basé au Sénégal</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 text-emerald-400 rounded-3xl mb-8 mx-auto w-fit border border-emerald-500/30"
+          >
+            <i class="fas fa-user-circle text-lg"></i>
+            Qui suis-je ?
+          </div>
+          <h1 class="text-5xl md:text-7xl font-bold mb-6">
+            À <span class="gradient-text">Propos</span>
+          </h1>
+          <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+            Passionné d'informatique, en reconversion professionnelle
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16 items-start mb-20">
+          <div class="space-y-6 text-gray-300 leading-relaxed md:pr-12">
+            <p>
+              Bonjour ! Je suis
+              <span class="text-white font-bold text-2xl"
+                >Jonthan DIPO Wando</span
+              >,<br />
+              développeur web passionné originaire de la
+              <span class="text-emerald-400 font-semibold"
+                >République du CONGO</span
+              >
+              🇨🇩 et actuellement basé au
+              <span class="text-emerald-400 font-semibold">Sénégal</span> 🇸🇳.
+            </p>
+            <p>
+              Ancien gestionnaire RH, j'ai sauté le pas de la
+              <strong>reconversion</strong> pour vivre ma passion :
+              <strong>l'informatique</strong>. Aujourd'hui en formation chez
+              <span class="font-bold text-white">UNIPRO</span>, je maîtrise le
+              développement web et explore la
+              <span class="text-emerald-400">cybersécurité</span>.
+            </p>
+            <p>
+              <strong>Mon mantra :</strong> Chaque ligne de code est une
+              opportunité d'apprendre et d'impacter positivement.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-4">
+              <span
+                class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                >Développeur Web</span
+              >
+              <span
+                class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                >Cybersécurité</span
+              >
+              <span
+                class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                >Freelance</span
+              >
             </div>
           </div>
 
-          <div class="md:col-span-7 space-y-10">
-            <div>
-              <h2 class="text-5xl font-bold gradient-text mb-6">
-                Bonjour, je suis Jonathan Wando
-              </h2>
-              <p class="text-xl text-gray-300 leading-relaxed">
-                Passionné par la technologie, je suis un développeur web junior
-                en formation à UNIPRO. J’aime transformer des idées en solutions
-                digitales concrètes.
-              </p>
+          <div class="relative flex justify-center">
+            <div
+              class="about-image w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-emerald-500/20 shadow-2xl shadow-emerald-500/20 ring-8 ring-black/20"
+            >
+              <img
+                src="bras.jpeg"
+                alt="Joe Wando - Développeur passionné"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute -top-4 -right-4 bg-emerald-500 text-black px-4 py-2 rounded-2xl font-bold shadow-lg"
+            >
+              <i class="fas fa-code mr-1"></i>En apprentissage
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div
+            class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+          >
+            <div class="text-4xl font-black text-emerald-400 mb-2">5+</div>
+            <div class="text-gray-400 text-sm font-medium tracking-wide">
+              Projets live
+            </div>
+          </div>
+          <div
+            class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+          >
+            <div class="text-4xl font-black text-emerald-400 mb-2">1</div>
+            <div class="text-gray-400 text-sm font-medium tracking-wide">
+              Stage pro
+            </div>
+          </div>
+          <div
+            class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+          >
+            <div class="text-4xl font-black text-emerald-400 mb-2">8+</div>
+            <div class="text-gray-400 text-sm font-medium tracking-wide">
+              Tech stack
+            </div>
+          </div>
+          <div
+            class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+          >
+            <div class="text-4xl font-black text-emerald-400 mb-2">2</div>
+            <div class="text-gray-400 text-sm font-medium tracking-wide">
+              Langues
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <h3 class="text-3xl font-bold mb-12 text-center">
+            <span class="gradient-text">Langues</span> parlées
+          </h3>
+          <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div
+              class="lang-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <span class="text-4xl">🇫🇷</span>
+                <div>
+                  <div class="text-xl font-bold text-white mb-1">Français</div>
+                  <div class="text-emerald-400 font-semibold">
+                    Langue maternelle
+                  </div>
+                </div>
+              </div>
+              <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div
+                  class="bg-gradient-to-r from-emerald-400 to-emerald-600 h-3 rounded-full w-full shadow-inner"
+                ></div>
+              </div>
             </div>
 
             <div
-              class="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed"
+              class="lang-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8"
             >
-              <p>
-                Après une reconversion professionnelle, j’ai découvert ma
-                véritable passion : le développement web et la cybersécurité.
-                J’ai acquis des compétences solides en HTML, CSS, JavaScript,
-                Tailwind ainsi qu’en gestion de systèmes et support
-                informatique.
-              </p>
-              <p>
-                Mon objectif est clair : continuer à progresser en tant que
-                développeur full-stack tout en apportant de la valeur à travers
-                des projets concrets et bien conçus.
-              </p>
-            </div>
-
-            <div class="grid grid-cols-2 gap-8 pt-8 border-t border-gray-800">
-              <div>
-                <h4
-                  class="text-emerald-400 font-semibold mb-4 flex items-center gap-2"
-                >
-                  <i class="fas fa-heart"></i> Ce que j’aime
-                </h4>
-                <ul class="space-y-3 text-gray-400">
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Créer des interfaces
-                    modernes
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Résoudre des
-                    problèmes complexes
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Apprendre de
-                    nouvelles technologies
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Football &amp;
-                    Musique
-                  </li>
-                </ul>
+              <div class="flex items-center gap-4 mb-6">
+                <span class="text-4xl">🇬🇧</span>
+                <div>
+                  <div class="text-xl font-bold text-white mb-1">English</div>
+                  <div class="text-emerald-400 font-semibold">
+                    B2 Intermediate
+                  </div>
+                </div>
               </div>
-
-              <div>
-                <h4
-                  class="text-emerald-400 font-semibold mb-4 flex items-center gap-2"
-                >
-                  <i class="fas fa-bullseye"></i> Mes objectifs
-                </h4>
-                <ul class="space-y-3 text-gray-400">
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Devenir développeur
-                    Full Stack
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Maîtriser la
-                    cybersécurité
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Contribuer à des
-                    projets open source
-                  </li>
-                  <li class="flex items-center gap-3">
-                    <span class="text-emerald-400">→</span> Créer ma propre
-                    startup
-                  </li>
-                </ul>
+              <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div
+                  class="bg-gradient-to-r from-emerald-400 to-emerald-600 h-3 rounded-full w-[75%] shadow-inner"
+                ></div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="flex flex-wrap gap-4 pt-8">
-              <a
-                href="projets.html"
-                class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-2xl transition flex items-center gap-3"
-              >
-                Voir mes projets
-                <i class="fas fa-arrow-right"></i>
-              </a>
-
-              <a
-                href="contact.html"
-                class="px-8 py-4 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 font-semibold rounded-2xl transition"
-              >
-                Discutons ensemble
-              </a>
+        <div class="mb-20">
+          <h3 class="text-3xl font-bold mb-12 text-center">
+            Mes <span class="gradient-text">objectifs</span>
+          </h3>
+          <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div
+              class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                >
+                  1
+                </div>
+                <span class="text-emerald-400 text-xl">→</span>
+              </div>
+              <h4 class="text-xl font-bold mb-2">Full Stack Developer</h4>
+              <p class="text-gray-400">Maîtriser Frontend + Backend</p>
             </div>
+            <div
+              class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                >
+                  2
+                </div>
+                <span class="text-emerald-400 text-xl">→</span>
+              </div>
+              <h4 class="text-xl font-bold mb-2">Cybersécurité</h4>
+              <p class="text-gray-400">Protéger les systèmes critiques</p>
+            </div>
+            <div
+              class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                >
+                  3
+                </div>
+                <span class="text-emerald-400 text-xl">→</span>
+              </div>
+              <h4 class="text-xl font-bold mb-2">Open Source</h4>
+              <p class="text-gray-400">Contribuer à la communauté</p>
+            </div>
+            <div
+              class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                >
+                  4
+                </div>
+                <span class="text-emerald-400 text-xl">→</span>
+              </div>
+              <h4 class="text-xl font-bold mb-2">Startup Tech</h4>
+              <p class="text-gray-400">Lancer mon projet innovant</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center space-y-8">
+          <div
+            class="inline-flex items-center gap-3 bg-emerald-500/10 border-2 border-emerald-500/30 text-emerald-400 px-8 py-4 rounded-3xl text-lg font-semibold mx-auto"
+          >
+            <div class="w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
+            <span>Disponible pour stage / alternance / freelance</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="projets.html"
+              class="group flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-3xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 hover:scale-[1.02] w-full sm:w-auto"
+            >
+              <i class="fas fa-eye"></i>
+              <span>Mes projets</span>
+              <i
+                class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"
+              ></i>
+            </a>
+            <a
+              href="contact.html"
+              class="px-10 py-5 border-2 border-gray-600 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-500/5 font-bold rounded-3xl transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+            >
+              <i class="fas fa-comments"></i>
+              Discutons
+            </a>
           </div>
         </div>
       </div>
@@ -245,15 +392,21 @@
           © 2026 Joe Wando - Tous droits réservés
         </p>
         <div class="flex justify-center gap-8 text-2xl">
-          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+          <a
+            href="https://www.linkedin.com/in/olivier-jonathan-dipo-wando-ba9138378"
+            target="_blank"
+            class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
             ><i class="fab fa-linkedin-in"></i
           ></a>
-          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+          <a
+            href="https://github.com/Joe-Wando"
+            target="_blank"
+            class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
             ><i class="fab fa-github"></i
           ></a>
           <a
             href="mailto:jonathan6wando@gmail.com"
-            class="text-gray-400 hover:text-emerald-400 transition"
+            class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
             ><i class="fas fa-envelope"></i
           ></a>
         </div>
@@ -262,9 +415,33 @@
 
     <script>
       function toggleMobileMenu() {
-        const menu = document.getElementById("mobile-menu");
-        menu.classList.toggle("hidden");
+        document.getElementById("mobile-menu").classList.toggle("hidden");
       }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("opacity-100", "translate-y-0");
+              entry.target.classList.remove("opacity-0", "translate-y-12");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".stat-card, .lang-card, .goal-card")
+        .forEach((el) => {
+          el.classList.add(
+            "opacity-0",
+            "translate-y-12",
+            "transition-all",
+            "duration-700",
+            "ease-out",
+          );
+          observer.observe(el);
+        });
     </script>
   </body>
 </html>

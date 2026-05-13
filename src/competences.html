@@ -11,29 +11,109 @@
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
       body {
         font-family: "Inter", sans-serif;
       }
+
+      .video-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .video-bg video {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      }
+
+      .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 15, 28, 0.88);
+        z-index: -1;
+      }
+
       .skill-card {
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
       .skill-card:hover {
         transform: translateY(-12px);
         box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
       }
+
+      .competence-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.1),
+          rgba(16, 185, 129, 0.05)
+        );
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      .competence-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(16, 185, 129, 0.6);
+        box-shadow: 0 20px 40px -10px rgb(16, 185, 129 / 0.2);
+      }
+
       .progress-bar {
         transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
       .gradient-text {
         background: linear-gradient(to right, #4ade80, #22c55e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
+      .badge-certification {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+      }
     </style>
   </head>
-  <body class="bg-[#0a0f1c] text-white flex flex-col min-h-screen">
+
+  <body class="bg-[#0a0f1c] text-gray-200">
+    <div class="video-bg">
+      <video autoplay muted loop playsinline>
+        <source src="Compétences.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
     <nav
-      class="fixed top-0 left-0 right-0 bg-[#0a0f1c]/95 backdrop-blur-lg border-b border-gray-800 z-50"
+      class="bg-[#0a0f1c]/95 border-b border-gray-800 sticky top-0 z-50 backdrop-blur-sm"
     >
       <div
         class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center"
@@ -48,12 +128,14 @@
         </div>
 
         <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-          <a href="index.html" class="hover:text-emerald-400 transition-colors"
+          <a
+            href="index.html"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >Accueil</a
           >
           <a
             href="formations.html"
-            class="hover:text-emerald-400 transition-colors"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >Formations</a
           >
           <a href="competences.html" class="text-emerald-400 font-semibold"
@@ -61,31 +143,31 @@
           >
           <a
             href="experiences.html"
-            class="hover:text-emerald-400 transition-colors"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >Expériences</a
           >
           <a
             href="projets.html"
-            class="hover:text-emerald-400 transition-colors"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >Projets</a
           >
           <a
             href="A_propos.html"
-            class="hover:text-emerald-400 transition-colors"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >À Propos</a
           >
           <a
             href="contact.html"
-            class="hover:text-emerald-400 transition-colors"
+            class="text-gray-400 hover:text-emerald-400 transition"
             >Contact</a
           >
         </div>
 
         <button
           onclick="toggleMobileMenu()"
-          class="md:hidden text-3xl text-gray-300 hover:text-white"
+          class="md:hidden text-2xl text-gray-400"
         >
-          ☰
+          <i class="fas fa-bars"></i>
         </button>
       </div>
 
@@ -117,184 +199,430 @@
       </div>
     </nav>
 
-    <main class="pt-24 flex-grow">
-      <section
-        class="min-h-[70vh] flex items-center justify-center text-center px-6 relative overflow-hidden"
-      >
+    <main class="relative z-10">
+      <section class="max-w-6xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Mes <span class="gradient-text">Compétences</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          Un profil polyvalent alliant <strong>Droit Public</strong>,
+          <strong>Ressources Humaines</strong>, <strong>Informatique</strong> et
+          <strong>Réseau</strong>
+        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-6 mb-20">
+        <h2 class="text-4xl font-bold mb-12 gradient-text">
+          Compétences Juridiques & RH
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-blue-500/20">
+                <i class="fas fa-scales text-blue-400"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold">Droit Public</h3>
+                <p class="text-gray-400 text-sm">Licence - 2021/2023</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i>
+                <span>Droit constitutionnel & administratif</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i>
+                <span>Droit du travail & relations sociales</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i>
+                <span>Droit contractuel & commercial</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-orange-500/20">
+                <i class="fas fa-file-contract text-orange-400"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold">Rédaction Juridique</h3>
+                <span class="badge-certification">
+                  <i class="fas fa-certificate"></i> Certifié
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i>
+                <span>Rédaction d'actes juridiques</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i>
+                <span>Contrats & conventions</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i>
+                <span>Documentation légale</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-green-500/20">
+                <i class="fas fa-users text-emerald-400"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold">Gestion RH</h3>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                <span>Recrutement & sélection</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                <span>Gestion administrative du personnel</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                <span>Paie & conformité légale</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-purple-500/20">
+                <i class="fas fa-shield-alt text-purple-400"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold">Conformité</h3>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i>
+                <span>Conformité légale & réglementaire</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i>
+                <span>Respect des normes & standards</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i>
+                <span>Audit & contrôle interne</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-6 mb-20">
+        <h2 class="text-4xl font-bold mb-12 gradient-text">
+          Compétences Techniques
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div
+            class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+          >
+            <h3 class="text-2xl font-semibold mb-6">Front-end</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>HTML/CSS</span>
+                  <span class="text-emerald-400">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>JavaScript</span>
+                  <span class="text-emerald-400">75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+          >
+            <h3 class="text-2xl font-semibold mb-6">Back-end</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>Python</span>
+                  <span class="text-emerald-400">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 80%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>Java</span>
+                  <span class="text-emerald-400">70%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+          >
+            <h3 class="text-2xl font-semibold mb-6">Langages</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>C</span>
+                  <span class="text-emerald-400">75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>Linux/Bash</span>
+                  <span class="text-emerald-400">70%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+          >
+            <h3 class="text-2xl font-semibold mb-6">Réseau & Cybersécurité</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="flex items-center gap-2">
+                    <i class="fas fa-certificate text-orange-400"></i>
+                    Cisco CCNA Débutant
+                  </span>
+                  <span class="text-orange-400 text-sm font-semibold"
+                    >Obtenue</span
+                  >
+                </div>
+                <p class="text-gray-400 text-xs mb-2">
+                  Certification : 30 avril 2026
+                </p>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-orange-500 h-2 rounded-full"
+                    style="width: 65%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>Réseaux & TCP/IP</span>
+                  <span class="text-emerald-400">70%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div
+                    class="progress-bar bg-emerald-500 h-2 rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div
-          class="absolute inset-0 bg-[radial-gradient(at_center,#4ade8020_0%,transparent_70%)]"
-        ></div>
-        <div class="relative z-10 max-w-3xl mx-auto">
-          <h2 class="text-5xl md:text-6xl font-bold mb-6">Mes Compétences</h2>
-          <p class="text-xl text-gray-400 max-w-xl mx-auto">
-            Un mélange de compétences techniques solides et de qualités humaines
-            développées au fil de mes expériences.
-          </p>
-        </div>
-      </section>
-
-      <section class="py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
-            Compétences Techniques
-          </h2>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
-              class="skill-card bg-[#111827] p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
-            >
+          class="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-2xl p-8"
+        >
+          <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+            <i class="fas fa-certificate text-orange-400 text-3xl"></i>
+            Certifications Obtenues
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-center gap-4">
               <div
-                class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6"
+                class="w-16 h-16 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0"
               >
-                <i class="fas fa-code text-3xl"></i>
+                <i class="fas fa-network-wired text-orange-400 text-2xl"></i>
               </div>
-              <h3 class="text-2xl font-semibold mb-3">Programmation</h3>
-              <p class="text-gray-400">
-                HTML, CSS, JavaScript, Python, Java, C
-              </p>
-            </div>
-
-            <div
-              class="skill-card bg-[#111827] p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
-            >
-              <div
-                class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6"
-              >
-                <i class="fas fa-chart-bar text-3xl"></i>
-              </div>
-              <h3 class="text-2xl font-semibold mb-3">Analyse de Données</h3>
-              <p class="text-gray-400">
-                Pandas, NumPy, Visualisation de données
-              </p>
-            </div>
-
-            <div
-              class="skill-card bg-[#111827] p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
-            >
-              <div
-                class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6"
-              >
-                <i class="fas fa-server text-3xl"></i>
-              </div>
-              <h3 class="text-2xl font-semibold mb-3">Systèmes & Réseaux</h3>
-              <p class="text-gray-400">
-                Windows, Linux (Ubuntu), Administration système
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-20 px-6 bg-[#0a0f1c]">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
-            Compétences Professionnelles
-          </h2>
-
-          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div
-              class="skill-card bg-[#111827] p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
-            >
-              <div
-                class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6"
-              >
-                <i class="fas fa-users text-3xl"></i>
-              </div>
-              <h3 class="text-2xl font-semibold mb-3">Administration & RH</h3>
-              <p class="text-gray-400">
-                Rédaction administrative, suivi RH, gestion des dossiers
-                personnels
-              </p>
-            </div>
-
-            <div
-              class="skill-card bg-[#111827] p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
-            >
-              <div
-                class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6"
-              >
-                <i class="fas fa-comments text-3xl"></i>
-              </div>
-              <h3 class="text-2xl font-semibold mb-3">Communication</h3>
-              <p class="text-gray-400">
-                Accueil, service client, communication professionnelle et
-                digitale
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
-            Niveau de Maîtrise
-          </h2>
-
-          <div class="space-y-10">
-            <div>
-              <div class="flex justify-between mb-3">
-                <span class="font-medium">HTML / CSS</span>
-                <span class="text-emerald-400">90%</span>
-              </div>
-              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                <div
-                  class="progress-bar bg-emerald-500 h-3 rounded-full w-[90%]"
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between mb-3">
-                <span class="font-medium">JavaScript</span>
-                <span class="text-emerald-400">75%</span>
-              </div>
-              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                <div
-                  class="progress-bar bg-emerald-500 h-3 rounded-full w-[75%]"
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between mb-3">
-                <span class="font-medium">Python</span>
-                <span class="text-emerald-400">80%</span>
-              </div>
-              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                <div
-                  class="progress-bar bg-emerald-500 h-3 rounded-full w-[80%]"
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between mb-3">
-                <span class="font-medium">Linux</span>
-                <span class="text-emerald-400">70%</span>
-              </div>
-              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                <div
-                  class="progress-bar bg-emerald-500 h-3 rounded-full w-[70%]"
-                ></div>
+              <div>
+                <p class="font-semibold text-lg">
+                  Cisco CCNA - Niveau Débutant
+                </p>
+                <p class="text-gray-400 text-sm">
+                  Obtenue le <strong>30 avril 2026</strong>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="py-20 px-6 bg-[#0a0f1c]">
-        <div class="max-w-6xl mx-auto text-center">
-          <h2 class="text-4xl font-bold mb-16 gradient-text">Soft Skills</h2>
+      <section class="max-w-6xl mx-auto px-6 mb-20">
+        <h2 class="text-4xl font-bold mb-12 gradient-text">
+          Compétences Professionnelles
+        </h2>
 
-          <div class="flex flex-wrap justify-center gap-4">
-            <span
-              class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
-              >Organisation</span
-            >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-cyan-500/20">
+                <i class="fas fa-headset text-cyan-400"></i>
+              </div>
+              <h3 class="text-2xl font-semibold">Support Client</h3>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                <span>Assistance utilisateur & troubleshooting</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                <span>Gestion des tickets & incidents</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                <span>Documentation & FAQ</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-pink-500/20">
+                <i class="fas fa-chalkboard-user text-pink-400"></i>
+              </div>
+              <h3 class="text-2xl font-semibold">Enseignement</h3>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i>
+                <span>Cours particuliers & tutorat</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i>
+                <span>Création de contenus pédagogiques</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i>
+                <span>Formation & sensibilisation</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-indigo-500/20">
+                <i class="fas fa-tasks text-indigo-400"></i>
+              </div>
+              <h3 class="text-2xl font-semibold">Gestion Administrative</h3>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                <span>Gestion de projets & suivi</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                <span>Coordination & organisation</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                <span>Documentation & reporting</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="competence-card rounded-3xl p-8 backdrop-blur-sm border-2"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-box bg-teal-500/20">
+                <i class="fas fa-search text-teal-400"></i>
+              </div>
+              <h3 class="text-2xl font-semibold">Recherche & Analyse</h3>
+            </div>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i>
+                <span>Recherche documentaire & veille</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i>
+                <span>Analyse critique & synthèse</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i>
+                <span>Rapports & études</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-6 mb-20">
+        <h2 class="text-4xl font-bold mb-12 gradient-text">Soft Skills</h2>
+
+        <div
+          class="bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-emerald-500/30 rounded-3xl p-12"
+        >
+          <div class="flex flex-wrap gap-4 justify-center">
             <span
               class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
               >Communication</span
+            >
+            <span
+              class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+              >Organisation</span
             >
             <span
               class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
@@ -308,21 +636,29 @@
               class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
               >Gestion du stress</span
             >
+            <span
+              class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+              >Leadership</span
+            >
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="bg-[#02060f] border-t border-gray-800 py-12 mt-auto">
+    <footer class="bg-[#02060f]/90 border-t border-gray-800 py-12 mt-auto">
       <div class="max-w-6xl mx-auto px-6 text-center">
         <p class="text-gray-500 mb-6">
           © 2026 Joe Wando - Tous droits réservés
         </p>
         <div class="flex justify-center gap-8 text-2xl">
-          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+          <a
+            href="https://www.linkedin.com/in/olivier-jonathan-dipo-wando-ba9138378"
+            class="text-gray-400 hover:text-emerald-400 transition"
             ><i class="fab fa-linkedin-in"></i
           ></a>
-          <a href="#" class="text-gray-400 hover:text-emerald-400 transition"
+          <a
+            href="https://github.com/Joe-Wando"
+            class="text-gray-400 hover:text-emerald-400 transition"
             ><i class="fab fa-github"></i
           ></a>
           <a
@@ -339,6 +675,12 @@
         const menu = document.getElementById("mobile-menu");
         menu.classList.toggle("hidden");
       }
+
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.add("hidden");
+        });
+      });
     </script>
   </body>
 </html>
