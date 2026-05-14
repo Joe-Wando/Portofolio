@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
 
-  "scripts": {
+"scripts": {
+    "dev": "vite",
     "build": "vite build",
-    "postinstall": "chmod +x node_modules/.bin/vite"
-    },
+    "preview": "vite preview"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
