@@ -3,59 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accueil - Joe Wando</title>
-    <link rel="stylesheet" href="output.css" />
+    <title>Joe Wando – Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
       body {
         font-family: "Inter", sans-serif;
       }
 
-      .gradient-text {
-        background: linear-gradient(to right, #4ade80, #22c55e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      html {
+        scroll-behavior: smooth;
       }
 
-      .video-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
+      .hero-video-bg {
+        position: absolute;
+        inset: 0;
         overflow: hidden;
+        z-index: 0;
       }
-      .video-bg video {
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
+      .hero-video-bg video {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
         object-fit: cover;
       }
 
-      .video-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: -1;
+      section {
+        position: relative;
       }
 
-      nav a {
-        transition: color 0.3s ease;
+      .parcours-box,
+      .competences-box {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .parcours-box.visible,
+      .competences-box.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .experience-card,
+      .project-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .experience-card:hover {
+        transform: translateY(-10px);
+      }
+      .project-card:hover {
+        transform: translateY(-12px);
+      }
+      .skill-card,
+      .competence-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .skill-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0/0.4);
+      }
+      .competence-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(16, 185, 129, 0.6);
+        box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+      }
+      .lang-card,
+      .stat-card,
+      .goal-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .lang-card:hover,
+      .stat-card:hover,
+      .goal-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      }
+      .about-image {
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .about-image:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+      .progress-bar {
+        transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .timeline-item:hover .timeline-dot {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.25);
+      }
+
+      .input-field:focus {
+        border-color: rgb(16 185 129);
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .success-toast {
+        animation:
+          slideIn 0.4s ease,
+          fadeOut 0.4s ease 3.5s forwards;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+
+      .section-sep {
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(16, 185, 129, 0.3),
+          transparent
+        );
+      }
+
+      .nav-active {
+        color: rgb(52 211 153) !important;
+        font-weight: 600;
       }
     </style>
   </head>
@@ -67,297 +156,1877 @@
       <div
         class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <div class="flex items-center gap-3">
+        <a href="#accueil" class="flex items-center gap-3">
           <div
             class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-emerald-500/30"
           >
             JW
           </div>
-          <h1 class="text-2xl font-bold tracking-tighter">Joe Wando</h1>
-        </div>
-
-        <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-          <a href="index.html" class="text-emerald-400 font-semibold"
+          <span class="text-2xl font-bold tracking-tighter">Joe Wando</span>
+        </a>
+        <div
+          class="hidden md:flex items-center gap-9 text-sm font-medium"
+          id="nav-links"
+        >
+          <a
+            href="#accueil"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Accueil</a
           >
           <a
-            href="formations.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#formations"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Formations</a
           >
           <a
-            href="competences.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#competences"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Compétences</a
           >
           <a
-            href="experiences.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#experiences"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Expériences</a
           >
           <a
-            href="projets.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#projets"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Projets</a
           >
           <a
-            href="A_propos.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#apropos"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >À Propos</a
           >
           <a
-            href="contact.html"
-            class="hover:text-emerald-400 transition-colors"
+            href="#contact"
+            class="nav-link hover:text-emerald-400 transition-colors"
             >Contact</a
           >
         </div>
-
         <button
           onclick="toggleMobileMenu()"
-          aria-label="Menu mobile"
           class="md:hidden p-2 hover:bg-gray-800 rounded-xl transition-colors"
+          aria-label="Menu"
         >
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[#0a0f1c] border-t border-gray-800 py-6"
+      >
+        <div class="flex flex-col items-center gap-6 text-lg">
+          <a
+            href="#accueil"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Accueil</a
+          >
+          <a
+            href="#formations"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Formations</a
+          >
+          <a
+            href="#competences"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Compétences</a
+          >
+          <a
+            href="#experiences"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Expériences</a
+          >
+          <a
+            href="#projets"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Projets</a
+          >
+          <a
+            href="#apropos"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >À Propos</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-emerald-400 transition"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+        </div>
+      </div>
     </nav>
 
-    <div
-      id="mobile-menu"
-      class="hidden fixed inset-0 top-[73px] bg-[#0a0f1c]/95 backdrop-blur-lg z-40 pt-8 flex flex-col items-center gap-8 text-lg md:hidden"
-    >
-      <a href="index.html" class="text-emerald-400 font-semibold">Accueil</a>
-      <a href="formations.html" class="hover:text-emerald-400 transition-colors"
-        >Formations</a
-      >
-      <a
-        href="competences.html"
-        class="hover:text-emerald-400 transition-colors"
-        >Compétences</a
-      >
-      <a
-        href="experiences.html"
-        class="hover:text-emerald-400 transition-colors"
-        >Expériences</a
-      >
-      <a href="projets.html" class="hover:text-emerald-400 transition-colors"
-        >Projets</a
-      >
-      <a href="A_propos.html" class="hover:text-emerald-400 transition-colors"
-        >À Propos</a
-      >
-      <a href="contact.html" class="hover:text-emerald-400 transition-colors"
-        >Contact</a
-      >
-    </div>
-
-    <main class="flex-1 pt-28">
+    <main class="flex-1">
       <section
-        class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden"
+        id="accueil"
+        class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden pt-20"
       >
-        <div class="video-bg">
+        <div class="hero-video-bg">
           <video autoplay muted loop playsinline>
-            <source src="videos/1.mp4" type="video/mp4" />
+            <source src="public/videos/1.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="video-overlay"></div>
-
+        <div class="absolute inset-0 bg-black/70 z-0"></div>
         <div class="relative z-10 max-w-3xl">
           <h1 class="text-6xl md:text-7xl font-bold mb-6">
-            Jonathan <span class="gradient-text">WANDO</span>
+            Jonathan
+            <span
+              class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+              >WANDO</span
+            >
           </h1>
           <p
             class="text-gray-300 text-xl md:text-2xl mb-10 max-w-2xl mx-auto leading-relaxed"
           >
             J'améliore votre regard de l'informatique
           </p>
-
           <div class="flex flex-col md:flex-row gap-4 justify-center">
             <a
-              href="projets.html"
+              href="#projets"
               class="bg-emerald-500 hover:bg-emerald-400 text-black px-8 py-4 rounded-2xl font-semibold transition-colors"
+              >Voir mes projets</a
             >
-              Voir mes projets
-            </a>
-
             <a
               href="CV DIPO WANDO.pdf"
               download
               class="bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-2xl font-semibold transition-colors"
+              >Télécharger mon CV</a
             >
-              Télécharger mon CV
-            </a>
           </div>
         </div>
       </section>
 
       <section class="py-24 px-6 bg-[#111827]/50">
-        <div class="max-w-6xl mx-auto">
-          <div class="flex flex-col gap-12">
+        <div class="max-w-6xl mx-auto flex flex-col gap-12">
+          <div
+            class="parcours-box bg-[#0f1419] border border-gray-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10"
+          >
+            <div class="p-8 flex flex-col items-center text-center">
+              <h2 class="text-2xl font-bold flex items-center gap-3 mb-6">
+                <i class="fas fa-graduation-cap text-emerald-400"></i> Mon
+                Parcours
+              </h2>
+              <ul class="space-y-6 text-gray-200 w-full max-w-2xl">
+                <li class="flex items-start gap-4 justify-center">
+                  <span
+                    class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
+                  ></span>
+                  <p class="text-lg leading-relaxed">
+                    Passionné d'informatique en
+                    <b>reconversion professionnelle</b>, je combine une
+                    formation en <b>Génie Informatique</b> et un background en
+                    <b>Droit Public</b> et <b>Ressources Humaines</b>.
+                  </p>
+                </li>
+                <li class="flex items-start gap-4 justify-center">
+                  <span
+                    class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
+                  ></span>
+                  <p class="text-lg leading-relaxed">
+                    Je construis des <b>solutions modernes</b> et
+                    <b>impactantes</b>, avec une approche pratique et orientée
+                    résultats.
+                  </p>
+                </li>
+                <li class="flex items-start gap-4 justify-center">
+                  <span
+                    class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
+                  ></span>
+                  <p class="text-lg leading-relaxed">
+                    Double compétence : vision <b>technique</b> +
+                    <b>juridique</b> pour des projets mieux cadrés.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="competences-box bg-[#0f1419] border border-gray-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10"
+          >
+            <div class="p-8">
+              <h2 class="text-3xl font-bold mb-10 flex items-center gap-3">
+                <i class="fas fa-code text-emerald-400 text-2xl"></i> Mes
+                Compétences
+              </h2>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3
+                    class="text-emerald-400 font-bold mb-4 flex items-center gap-2 text-xl"
+                  >
+                    <i class="fas fa-palette text-sm"></i> Front-end
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >HTML5</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >CSS</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >React</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >Tailwind</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xl"
+                  >
+                    <i class="fas fa-server text-sm"></i> Back-end
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
+                      >Node.js</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
+                      >Python</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
+                      >Java</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-orange-400 font-bold mb-4 flex items-center gap-2 text-xl"
+                  >
+                    <i class="fas fa-network-wired text-sm"></i> Systèmes &
+                    Réseaux
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
+                      >C</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
+                      >Linux/Bash</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
+                      >TCP/IP</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
+                      >Cisco CCNA</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-emerald-400 font-bold mb-4 flex items-center gap-2 text-xl"
+                  >
+                    <i class="fas fa-briefcase text-sm"></i> Juridique & RH
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >Droit Public</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >Droit du Travail</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >Recrutement</span
+                    >
+                    <span
+                      class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+                      >Gestion RH</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="formations" class="py-24 px-6">
+        <div class="absolute inset-0 overflow-hidden -z-10">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover"
+          >
+            <source src="public/videos/Formations.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 bg-[#0a0f1c]/88"></div>
+        </div>
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-20">
+            <h2 class="text-5xl md:text-6xl font-bold mb-4">
+              Mon
+              <span
+                class="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent"
+                >Parcours</span
+              >
+            </h2>
+            <p class="text-gray-400 text-lg max-w-xl mx-auto">
+              De la terminale jusqu'à aujourd'hui, voici les étapes qui ont
+              forgé mon profil.
+            </p>
+          </div>
+
+          <div class="relative">
             <div
-              class="parcours-box bg-[#0f1419] border border-gray-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 opacity-0 translate-y-10"
+              class="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 via-emerald-500/30 to-transparent"
+            ></div>
+            <div class="flex flex-col gap-14">
+              <div class="timeline-item relative flex gap-10">
+                <div
+                  class="timeline-dot transition-all duration-300 absolute left-4 w-8 h-8 bg-emerald-500 rounded-2xl flex items-center justify-center border-4 border-[#0a0f1c] z-20"
+                >
+                  <i class="fas fa-laptop-code text-black text-sm"></i>
+                </div>
+                <div class="ml-20 flex-1">
+                  <div
+                    class="transition-all duration-500 backdrop-blur-[10px] hover:-translate-y-2 hover:border-emerald-500/50 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-[#111827]/80 border border-gray-700/60 rounded-3xl p-9"
+                  >
+                    <div
+                      class="flex flex-wrap gap-4 justify-between items-start mb-4"
+                    >
+                      <div>
+                        <h3 class="text-2xl font-semibold">
+                          Licence II – Génie Informatique
+                        </h3>
+                        <p class="text-emerald-400 mt-1">
+                          UNIPRO • Dakar, Sénégal
+                        </p>
+                      </div>
+                      <span
+                        class="inline-block px-5 py-2 bg-emerald-500/10 text-emerald-400 text-sm font-medium rounded-2xl border border-emerald-500/30"
+                        >2026 – Aujourd'hui</span
+                      >
+                    </div>
+                    <ul
+                      class="text-gray-300 leading-relaxed list-disc list-inside space-y-1"
+                    >
+                      <li>Délégué de classe</li>
+                      <li>Approfondissement en programmation et systèmes</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item relative flex gap-10">
+                <div
+                  class="timeline-dot transition-all duration-300 absolute left-4 w-8 h-8 bg-emerald-500 rounded-2xl flex items-center justify-center border-4 border-[#0a0f1c] z-20"
+                >
+                  <i class="fas fa-code text-black text-sm"></i>
+                </div>
+                <div class="ml-20 flex-1">
+                  <div
+                    class="transition-all duration-500 backdrop-blur-[10px] hover:-translate-y-2 hover:border-emerald-500/50 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-[#111827]/80 border border-gray-700/60 rounded-3xl p-9"
+                  >
+                    <div
+                      class="flex flex-wrap gap-4 justify-between items-start mb-4"
+                    >
+                      <div>
+                        <h3 class="text-2xl font-semibold">
+                          Licence I – Génie Informatique
+                        </h3>
+                        <p class="text-emerald-400 mt-1">
+                          UNIPRO • Dakar, Sénégal
+                        </p>
+                      </div>
+                      <span
+                        class="inline-block px-5 py-2 bg-emerald-500/10 text-emerald-400 text-sm font-medium rounded-2xl border border-emerald-500/30"
+                        >2024 – 2025</span
+                      >
+                    </div>
+                    <ul
+                      class="text-gray-300 leading-relaxed list-disc list-inside space-y-1"
+                    >
+                      <li>Major de promotion</li>
+                      <li>Délégué de classe</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item relative flex gap-10">
+                <div
+                  class="timeline-dot transition-all duration-300 absolute left-4 w-8 h-8 bg-purple-500 rounded-2xl flex items-center justify-center border-4 border-[#0a0f1c] z-20"
+                >
+                  <i class="fas fa-users text-black text-sm"></i>
+                </div>
+                <div class="ml-20 flex-1">
+                  <div
+                    class="transition-all duration-500 backdrop-blur-[10px] hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-[#111827]/80 border border-purple-800/40 rounded-3xl p-9"
+                  >
+                    <div
+                      class="flex flex-wrap gap-4 justify-between items-start mb-4"
+                    >
+                      <div>
+                        <h3 class="text-2xl font-semibold">
+                          Licence 3 – Gestion des Ressources Humaines
+                        </h3>
+                        <p class="text-purple-400 mt-1">
+                          UNIPRO • Dakar, Sénégal
+                        </p>
+                      </div>
+                      <span
+                        class="inline-block px-5 py-2 bg-purple-500/10 text-purple-400 text-sm font-medium rounded-2xl border border-purple-500/30"
+                        >2024 – 2025</span
+                      >
+                    </div>
+                    <ul
+                      class="text-gray-300 leading-relaxed list-disc list-inside space-y-1"
+                    >
+                      <li>
+                        Suivie en parallèle de la Licence I Génie Informatique
+                      </li>
+                      <li>
+                        Compétences en administration RH, suivi des dossiers
+                        salariés
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item relative flex gap-10">
+                <div
+                  class="timeline-dot transition-all duration-300 absolute left-4 w-8 h-8 bg-blue-500 rounded-2xl flex items-center justify-center border-4 border-[#0a0f1c] z-20"
+                >
+                  <i class="fas fa-balance-scale text-black text-sm"></i>
+                </div>
+                <div class="ml-20 flex-1">
+                  <div
+                    class="transition-all duration-500 backdrop-blur-[10px] hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-[#111827]/80 border border-blue-800/40 rounded-3xl p-9"
+                  >
+                    <div
+                      class="flex flex-wrap gap-4 justify-between items-start mb-4"
+                    >
+                      <div>
+                        <h3 class="text-2xl font-semibold">
+                          Licence en Droit Public
+                        </h3>
+                        <p class="text-blue-400 mt-1">
+                          Université Marien Ngouabi • Brazzaville, Congo
+                        </p>
+                      </div>
+                      <span
+                        class="inline-block px-5 py-2 bg-blue-500/10 text-blue-400 text-sm font-medium rounded-2xl border border-blue-500/30"
+                        >2021 – 2023</span
+                      >
+                    </div>
+                    <ul
+                      class="text-gray-300 leading-relaxed list-disc list-inside space-y-1"
+                    >
+                      <li>
+                        Droit constitutionnel, administratif et des libertés
+                        publiques
+                      </li>
+                      <li>
+                        Initiation aux institutions juridiques et politiques
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item relative flex gap-10">
+                <div
+                  class="timeline-dot transition-all duration-300 absolute left-4 w-8 h-8 bg-emerald-500 rounded-2xl flex items-center justify-center border-4 border-[#0a0f1c] z-20"
+                >
+                  <i class="fas fa-school text-black text-sm"></i>
+                </div>
+                <div class="ml-20 flex-1">
+                  <div
+                    class="transition-all duration-500 backdrop-blur-[10px] hover:-translate-y-2 hover:border-emerald-500/50 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-[#111827]/80 border border-gray-700/60 rounded-3xl p-9"
+                  >
+                    <div
+                      class="flex flex-wrap gap-4 justify-between items-start mb-4"
+                    >
+                      <div>
+                        <h3 class="text-2xl font-semibold">
+                          Baccalauréat Série A4
+                        </h3>
+                        <p class="text-emerald-400 mt-1">
+                          Light World School • Pointe-Noire, Congo
+                        </p>
+                      </div>
+                      <span
+                        class="inline-block px-5 py-2 bg-emerald-500/10 text-emerald-400 text-sm font-medium rounded-2xl border border-emerald-500/30"
+                        >2020</span
+                      >
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                      Diplôme du baccalauréat série A4 obtenu à Pointe-Noire.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="competences" class="py-24 px-6 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">
+              Mes
+              <span
+                class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                >Compétences</span
+              >
+            </h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+              Un profil polyvalent alliant <strong>Droit Public</strong>,
+              <strong>Ressources Humaines</strong>,
+              <strong>Informatique</strong> et <strong>Réseau</strong>
+            </p>
+          </div>
+
+          <h3
+            class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+          >
+            Compétences Juridiques & RH
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
             >
-              <div class="p-8 flex flex-col items-center text-center">
-                <h2 class="text-2xl font-bold flex items-center gap-3 mb-6">
-                  <i class="fas fa-graduation-cap text-emerald-400"></i>
-                  Mon Parcours
-                </h2>
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-blue-500/20"
+                >
+                  <i class="fas fa-scales text-blue-400"></i>
+                </div>
+                <div>
+                  <h4 class="text-2xl font-semibold">Droit Public</h4>
+                  <p class="text-gray-400 text-sm">Licence - 2021/2023</p>
+                </div>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i
+                  ><span>Droit constitutionnel & administratif</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i
+                  ><span>Droit du travail & relations sociales</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-blue-400 mt-1 flex-shrink-0"></i
+                  ><span>Droit contractuel & commercial</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-orange-500/20"
+                >
+                  <i class="fas fa-file-contract text-orange-400"></i>
+                </div>
+                <div>
+                  <h4 class="text-2xl font-semibold">Rédaction Juridique</h4>
+                  <span
+                    class="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-black px-4 py-1 rounded-full text-sm font-semibold mt-1"
+                    ><i class="fas fa-certificate"></i> Certifié</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i
+                  ><span>Rédaction d'actes juridiques</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i
+                  ><span>Contrats & conventions</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-orange-400 mt-1 flex-shrink-0"></i
+                  ><span>Documentation légale</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-green-500/20"
+                >
+                  <i class="fas fa-users text-emerald-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Gestion RH</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"
+                  ></i
+                  ><span>Recrutement & sélection</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"
+                  ></i
+                  ><span>Gestion administrative du personnel</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"
+                  ></i
+                  ><span>Paie & conformité légale</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-purple-500/20"
+                >
+                  <i class="fas fa-shield-alt text-purple-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Conformité</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i
+                  ><span>Conformité légale & réglementaire</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i
+                  ><span>Respect des normes & standards</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-purple-400 mt-1 flex-shrink-0"></i
+                  ><span>Audit & contrôle interne</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-                <ul class="space-y-6 text-gray-200 w-full max-w-2xl">
-                  <li class="flex items-start gap-4 justify-center">
-                    <span
-                      class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
-                    ></span>
-                    <p class="text-lg leading-relaxed">
-                      Étudiant en <b>Génie Informatique</b> à <b>l'UNIPRO</b>,
-                      passionné par le développement web et la DATA.
-                    </p>
-                  </li>
+          <h3
+            class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+          >
+            Compétences Techniques
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div
+              class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            >
+              <h4 class="text-2xl font-semibold mb-6">Front-end</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>HTML/CSS</span
+                    ><span class="text-emerald-400">90%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>JavaScript</span
+                    ><span class="text-emerald-400">75%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 75%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            >
+              <h4 class="text-2xl font-semibold mb-6">Back-end</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>Python</span><span class="text-emerald-400">80%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 80%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>Java</span><span class="text-emerald-400">70%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 70%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            >
+              <h4 class="text-2xl font-semibold mb-6">Langages</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>C</span><span class="text-emerald-400">75%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 75%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>Linux/Bash</span
+                    ><span class="text-emerald-400">70%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 70%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="skill-card bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            >
+              <h4 class="text-2xl font-semibold mb-6">
+                Réseau & Cybersécurité
+              </h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span class="flex items-center gap-2"
+                      ><i class="fas fa-certificate text-orange-400"></i>Cisco
+                      CCNA Débutant</span
+                    ><span class="text-orange-400 text-sm font-semibold"
+                      >Obtenue</span
+                    >
+                  </div>
+                  <p class="text-gray-400 text-xs mb-2">
+                    Certification : 30 avril 2026
+                  </p>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-orange-500 h-2 rounded-full"
+                      style="width: 65%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span>Réseaux & TCP/IP</span
+                    ><span class="text-emerald-400">70%</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      class="progress-bar bg-emerald-500 h-2 rounded-full"
+                      style="width: 70%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  <li class="flex items-start gap-4 justify-center">
-                    <span
-                      class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
-                    ></span>
-                    <p class="text-lg leading-relaxed">
-                      Je construis des <b>solutions modernes</b> et
-                      <b>impactantes</b>, avec une approche pratique et orientée
-                      résultats.
-                    </p>
-                  </li>
+          <div
+            class="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-2xl p-8 mb-12"
+          >
+            <h4 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+              <i class="fas fa-certificate text-orange-400 text-3xl"></i
+              >Certifications Obtenues
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-16 h-16 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="fas fa-network-wired text-orange-400 text-2xl"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-lg">
+                    Cisco CCNA - Niveau Débutant
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    Obtenue le <strong>30 avril 2026</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mt-6 italic">
+              D'autres certifications seront ajoutées au fur et à mesure de
+              votre progression...
+            </p>
+          </div>
 
-                  <li class="flex items-start gap-4 justify-center">
-                    <span
-                      class="mt-1 inline-block w-3 h-3 bg-emerald-400 rounded-full flex-shrink-0"
-                    ></span>
-                    <p class="text-lg leading-relaxed">
-                      Double compétence : vision <b>technique</b> +
-                      <b>juridique</b> pour des projets mieux cadrés.
+          <h3
+            class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+          >
+            Compétences Professionnelles
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-cyan-500/20"
+                >
+                  <i class="fas fa-headset text-cyan-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Support Client</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i
+                  ><span>Assistance utilisateur & troubleshooting</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i
+                  ><span>Gestion des tickets & incidents</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-cyan-400 mt-1 flex-shrink-0"></i
+                  ><span>Documentation & FAQ</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-pink-500/20"
+                >
+                  <i class="fas fa-chalkboard-user text-pink-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Enseignement</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i
+                  ><span>Cours particuliers & tutorat</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i
+                  ><span>Création de contenus pédagogiques</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-pink-400 mt-1 flex-shrink-0"></i
+                  ><span>Formation & sensibilisation</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-indigo-500/20"
+                >
+                  <i class="fas fa-tasks text-indigo-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Gestion Administrative</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i
+                  ><span>Gestion de projets & suivi</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i
+                  ><span>Coordination & organisation</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-indigo-400 mt-1 flex-shrink-0"></i
+                  ><span>Documentation & reporting</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="competence-card rounded-3xl p-8 backdrop-blur-sm bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border-2 border-emerald-500/30"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-[60px] h-[60px] rounded-xl flex items-center justify-center text-[28px] bg-teal-500/20"
+                >
+                  <i class="fas fa-search text-teal-400"></i>
+                </div>
+                <h4 class="text-2xl font-semibold">Recherche & Analyse</h4>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i
+                  ><span>Recherche documentaire & veille</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i
+                  ><span>Analyse critique & synthèse</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-teal-400 mt-1 flex-shrink-0"></i
+                  ><span>Rapports & études</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3
+            class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+          >
+            Soft Skills
+          </h3>
+          <div
+            class="bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-emerald-500/30 rounded-3xl p-12"
+          >
+            <div class="flex flex-wrap gap-4 justify-center">
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Communication</span
+              >
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Organisation</span
+              >
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Rigueur</span
+              >
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Travail en équipe</span
+              >
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Gestion du stress</span
+              >
+              <span
+                class="px-8 py-4 bg-emerald-500 text-black rounded-3xl font-semibold text-lg hover:scale-110 transition"
+                >Leadership</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="experiences" class="py-24 px-6 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              class="text-5xl font-bold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+            >
+              Mes Expériences
+            </h2>
+            <p class="text-gray-400 mt-4 text-lg">
+              Un parcours varié qui allie sécurité, pédagogie, relation client
+              et informatique
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div
+              class="experience-card bg-[#111827]/90 p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-shield-alt text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">Agent de Sécurité</h3>
+                    <p class="text-emerald-400 text-sm mt-1">
+                      Falcon Security • 2025
                     </p>
-                  </li>
-                </ul>
+                  </div>
+                </div>
+                <span
+                  class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
+                  >Terminé</span
+                >
+              </div>
+              <ul class="space-y-3 text-gray-300 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Surveillance des
+                  accès et contrôle
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Gestion des
+                  incidents et conflits
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Rondes de sécurité
+                  et prévention
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="experience-card bg-[#111827]/90 p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">Enseignant</h3>
+                    <p class="text-emerald-400 text-sm mt-1">2024 – 2025</p>
+                  </div>
+                </div>
+                <span
+                  class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
+                  >Terminé</span
+                >
+              </div>
+              <ul class="space-y-3 text-gray-300 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Animation de cours
+                  et formations
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Suivi pédagogique
+                  des élèves
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Encadrement et
+                  évaluation
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="experience-card bg-[#111827]/90 p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-headset text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">Téléconseiller</h3>
+                    <p class="text-emerald-400 text-sm mt-1">
+                      Septembre 2025 – Janvier 2026
+                    </p>
+                  </div>
+                </div>
+                <span
+                  class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
+                  >Terminé</span
+                >
+              </div>
+              <ul class="space-y-3 text-gray-300 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Gestion des appels
+                  entrants et sortants
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Assistance et
+                  support client
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Suivi
+                  administratif des dossiers
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="experience-card bg-[#111827]/90 p-8 rounded-3xl border border-gray-700 hover:border-emerald-500"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-laptop-code text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">Stage Informatique</h3>
+                    <p class="text-emerald-400 text-sm mt-1">2025</p>
+                  </div>
+                </div>
+                <span
+                  class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
+                  >Terminé</span
+                >
+              </div>
+              <ul class="space-y-3 text-gray-300 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Maintenance du
+                  parc informatique
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Support
+                  utilisateur et assistance
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 mt-1">•</span>Diagnostic et
+                  résolution de pannes
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="projets" class="py-24 px-6 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              class="text-5xl font-bold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+            >
+              Mes Projets
+            </h2>
+            <p class="text-gray-400 mt-4 text-lg">
+              Quelques réalisations récentes en développement web et
+              informatique
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
+            >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i class="fas fa-film text-7xl text-emerald-500/30"></i>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3">
+                  Recommandation de Films internationaux
+                </h3>
+                <p class="text-gray-400 mb-6">
+                  Plateforme de recommandation de films africains avec système
+                  de filtrage par genre et acteur.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >Tailwind CSS</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://site-de-films.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Site-de-films"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
               </div>
             </div>
 
             <div
-              class="competences-box bg-[#0f1419] border border-gray-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 opacity-0 translate-y-10"
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
             >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i class="fas fa-brain text-7xl text-emerald-500/30"></i>
+              </div>
               <div class="p-8">
-                <h2 class="text-3xl font-bold mb-10 flex items-center gap-3">
-                  <i class="fas fa-code text-emerald-400 text-2xl"></i>
-                  Mes Compétences
-                </h2>
+                <h3 class="text-2xl font-semibold mb-3">Assistant IA</h3>
+                <p class="text-gray-400 mb-6">
+                  Chatbot intelligent intégré au portfolio avec réponses
+                  contextuelles et conversations naturelles.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >OpenAI API</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://portfolio-ia-demo.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Mon-IA"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
+            <div
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
+            >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i class="fas fa-users text-7xl text-emerald-500/30"></i>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3">Gestion RH</h3>
+                <p class="text-gray-400 mb-6">
+                  Application complète de gestion des ressources humaines avec
+                  CRUD employés et paies.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >PostgreSQL</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://gestion-rh-demo.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Gestion-du-personnel"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
+            >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i
+                  class="fas fa-file-contract text-7xl text-emerald-500/30"
+                ></i>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3">Gestion de Contrats</h3>
+                <p class="text-gray-400 mb-6">
+                  Plateforme de gestion et de suivi des contrats avec export PDF
+                  et recherche avancée.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >Firebase</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://gestion-contrats-demo.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Site-de-vente-de-contrats"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
+            >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i class="fas fa-futbol text-7xl text-emerald-500/30"></i>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3">Plateforme Football</h3>
+                <p class="text-gray-400 mb-6">
+                  Application web avec statistiques, classements, calendrier et
+                  scores en direct du football.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >Vue.js</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >SAINT MANGA</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://plateforme-football-demo.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Site-de-vente-de-contrats"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-[#111827]/90 rounded-3xl overflow-hidden border border-gray-700 hover:border-emerald-500"
+            >
+              <div
+                class="h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+              >
+                <i class="fas fa-laptop-code text-7xl text-emerald-500/30"></i>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3">Portfolio Personnel</h3>
+                <p class="text-gray-400 mb-6">
+                  Création d'un site portfolio moderne, responsive et animé avec
+                  Tailwind CSS.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
+                    >Tailwind CSS</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://portofolio-weld-nine-40.vercel.app"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-center py-3 rounded-2xl font-semibold transition"
+                    >Voir le projet</a
+                  >
+                  <a
+                    href="https://github.com/Joe-Wando/Portofolio"
+                    class="flex-1 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-center py-3 rounded-2xl font-semibold transition"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="apropos" class="py-24 px-6 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-20">
+            <div
+              class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 text-emerald-400 rounded-3xl mb-8 mx-auto w-fit border border-emerald-500/30"
+            >
+              <i class="fas fa-user-circle text-lg"></i> Qui suis-je ?
+            </div>
+            <h2 class="text-5xl md:text-7xl font-bold mb-6">
+              À
+              <span
+                class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                >Propos</span
+              >
+            </h2>
+            <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+              Passionné d'informatique, en reconversion professionnelle
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-16 items-start mb-20">
+            <div class="space-y-6 text-gray-300 leading-relaxed md:pr-12">
+              <p>
+                Bonjour ! Je suis
+                <span class="text-white font-bold text-2xl"
+                  >Jonathan DIPO Wando</span
+                >,<br />
+                développeur web passionné originaire de la
+                <span class="text-emerald-400 font-semibold"
+                  >République du CONGO</span
+                >
+                et actuellement basé au
+                <span class="text-emerald-400 font-semibold">Sénégal</span>
+              </p>
+              <p>
+                Ancien gestionnaire RH, j'ai sauté le pas de la
+                <strong>reconversion</strong> pour vivre ma passion :
+                <strong>l'informatique</strong>. Aujourd'hui en formation chez
+                <span class="font-bold text-white">UNIPRO</span>, je maîtrise le
+                développement web et explore la
+                <span class="text-emerald-400">cybersécurité</span>.
+              </p>
+              <p>
+                <strong>Mon mantra :</strong> Chaque ligne de code est une
+                opportunité d'apprendre et d'impacter positivement.
+              </p>
+              <div class="flex flex-wrap gap-4 pt-4">
+                <span
+                  class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                  >Développeur Web</span
+                >
+                <span
+                  class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                  >Cybersécurité</span
+                >
+                <span
+                  class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-xl text-sm font-medium border border-emerald-500/30"
+                  >Freelance</span
+                >
+              </div>
+            </div>
+            <div class="relative flex justify-center">
+              <div
+                class="about-image w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-emerald-500/20 shadow-2xl shadow-emerald-500/20 ring-8 ring-black/20"
+              >
+                <img
+                  src="public/photo/bras.jpeg"
+                  alt="Joe Wando - Développeur passionné"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div
+                class="absolute -top-4 -right-4 bg-emerald-500 text-black px-4 py-2 rounded-2xl font-bold shadow-lg"
+              >
+                <i class="fas fa-code mr-1"></i>En apprentissage
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+            <div
+              class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+            >
+              <div class="text-4xl font-black text-emerald-400 mb-2">5+</div>
+              <div class="text-gray-400 text-sm font-medium tracking-wide">
+                Projets live
+              </div>
+            </div>
+            <div
+              class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+            >
+              <div class="text-4xl font-black text-emerald-400 mb-2">1</div>
+              <div class="text-gray-400 text-sm font-medium tracking-wide">
+                Stage pro
+              </div>
+            </div>
+            <div
+              class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+            >
+              <div class="text-4xl font-black text-emerald-400 mb-2">8+</div>
+              <div class="text-gray-400 text-sm font-medium tracking-wide">
+                Tech stack
+              </div>
+            </div>
+            <div
+              class="stat-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8 text-center"
+            >
+              <div class="text-4xl font-black text-emerald-400 mb-2">2</div>
+              <div class="text-gray-400 text-sm font-medium tracking-wide">
+                Langues
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-20">
+            <h3 class="text-3xl font-bold mb-12 text-center">
+              <span
+                class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                >Langues</span
+              >
+              parlées
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+              <div
+                class="lang-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="text-4xl">🇫🇷</span>
                   <div>
-                    <h3
-                      class="text-emerald-400 font-bold mb-4 flex items-center gap-2 text-xl"
-                    >
-                      <i class="fas fa-palette text-emerald-400 text-sm"></i>
-                      Front-end
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >HTML5</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >CSS</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >JavaScript</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >React</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >Tailwind</span
-                      >
+                    <div class="text-xl font-bold text-white mb-1">
+                      Français
                     </div>
-                  </div>
-
-                  <div>
-                    <h3
-                      class="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xl"
-                    >
-                      <i class="fas fa-server text-blue-400 text-sm"></i>
-                      Back-end
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
-                        >Node.js</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
-                        >Python</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-blue-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-500/20 transition-colors"
-                        >Java</span
-                      >
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3
-                      class="text-orange-400 font-bold mb-4 flex items-center gap-2 text-xl"
-                    >
-                      <i
-                        class="fas fa-network-wired text-orange-400 text-sm"
-                      ></i>
-                      Systèmes & Réseaux
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
-                        >C</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
-                        >Linux/Bash</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
-                        >TCP/IP</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-orange-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-500/20 transition-colors"
-                        >Cisco CCNA</span
-                      >
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3
-                      class="text-emerald-400 font-bold mb-4 flex items-center gap-2 text-xl"
-                    >
-                      <i class="fas fa-briefcase text-emerald-400 text-sm"></i>
-                      Juridique & RH
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >Droit Public</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >Droit du Travail</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >Recrutement</span
-                      >
-                      <span
-                        class="bg-[#1f2937] text-emerald-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-emerald-500/20 transition-colors"
-                        >Gestion RH</span
-                      >
+                    <div class="text-emerald-400 font-semibold">
+                      Langue maternelle
                     </div>
                   </div>
                 </div>
+                <div
+                  class="w-full bg-gray-800 rounded-full h-3 overflow-hidden"
+                >
+                  <div
+                    class="bg-gradient-to-r from-emerald-400 to-emerald-600 h-3 rounded-full w-full"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="lang-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="text-4xl">🇬🇧</span>
+                  <div>
+                    <div class="text-xl font-bold text-white mb-1">English</div>
+                    <div class="text-emerald-400 font-semibold">
+                      B2 Intermediate
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-gray-800 rounded-full h-3 overflow-hidden"
+                >
+                  <div
+                    class="bg-gradient-to-r from-emerald-400 to-emerald-600 h-3 rounded-full w-3/4"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-20">
+            <h3 class="text-3xl font-bold mb-12 text-center">
+              Mes
+              <span
+                class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                >objectifs</span
+              >
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div
+                class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div
+                    class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                  >
+                    1
+                  </div>
+                  <span class="text-emerald-400 text-xl">→</span>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Full Stack Developer</h4>
+                <p class="text-gray-400">Maîtriser Frontend + Backend</p>
+              </div>
+              <div
+                class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div
+                    class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                  >
+                    2
+                  </div>
+                  <span class="text-emerald-400 text-xl">→</span>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Cybersécurité</h4>
+                <p class="text-gray-400">Protéger les systèmes critiques</p>
+              </div>
+              <div
+                class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div
+                    class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                  >
+                    3
+                  </div>
+                  <span class="text-emerald-400 text-xl">→</span>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Open Source</h4>
+                <p class="text-gray-400">Contribuer à la communauté</p>
+              </div>
+              <div
+                class="goal-card bg-[#111827]/80 backdrop-blur-sm border border-gray-700 hover:border-emerald-500/50 rounded-3xl p-8"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div
+                    class="w-10 h-10 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 font-bold text-lg"
+                  >
+                    4
+                  </div>
+                  <span class="text-emerald-400 text-xl">→</span>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Startup Tech</h4>
+                <p class="text-gray-400">Lancer mon projet innovant</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center space-y-8">
+            <div
+              class="inline-flex items-center gap-3 bg-emerald-500/10 border-2 border-emerald-500/30 text-emerald-400 px-8 py-4 rounded-3xl text-lg font-semibold mx-auto"
+            >
+              <div
+                class="w-3 h-3 bg-emerald-400 rounded-full animate-ping"
+              ></div>
+              <span>Disponible pour stage / alternance / freelance</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#projets"
+                class="group flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-3xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 hover:scale-[1.02] w-full sm:w-auto"
+              >
+                <i class="fas fa-eye"></i><span>Mes projets</span
+                ><i
+                  class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"
+                ></i>
+              </a>
+              <a
+                href="#contact"
+                class="px-10 py-5 border-2 border-gray-600 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-500/5 font-bold rounded-3xl transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <i class="fas fa-comments"></i>Discutons
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-sep"></div>
+
+      <section id="contact" class="py-24 px-6 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-widest mb-6"
+              >Contact</span
+            >
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">
+              Travaillons
+              <span
+                class="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                >ensemble</span
+              >
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Une idée de projet, une opportunité ou simplement envie d'échanger
+              ? Je suis disponible et à l'écoute.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div
+              class="bg-[#0f1419]/80 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-8 md:p-10"
+            >
+              <h3 class="text-2xl font-bold mb-8">Envoyer un message</h3>
+              <form
+                id="contact-form"
+                onsubmit="handleSubmit(event)"
+                class="flex flex-col gap-6"
+              >
+                <div class="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Prénom</label
+                    >
+                    <input
+                      type="text"
+                      required
+                      placeholder="Jean"
+                      class="input-field w-full bg-gray-800/50 border border-gray-700/50 rounded-2xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-300"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Nom</label
+                    >
+                    <input
+                      type="text"
+                      required
+                      placeholder="Dupont"
+                      class="input-field w-full bg-gray-800/50 border border-gray-700/50 rounded-2xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-300"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    required
+                    placeholder="jean@exemple.com"
+                    class="input-field w-full bg-gray-800/50 border border-gray-700/50 rounded-2xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-300"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2"
+                    >Sujet</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    placeholder="Proposition de projet..."
+                    class="input-field w-full bg-gray-800/50 border border-gray-700/50 rounded-2xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-300"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2"
+                    >Message</label
+                  >
+                  <textarea
+                    required
+                    rows="5"
+                    placeholder="Décrivez votre projet ou votre demande..."
+                    class="input-field w-full bg-gray-800/50 border border-gray-700/50 rounded-2xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-300 resize-none"
+                  ></textarea>
+                </div>
+                <button
+                  id="submit-btn"
+                  type="submit"
+                  class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2"
+                >
+                  <i class="fas fa-paper-plane"></i>Envoyer le message
+                </button>
+              </form>
+            </div>
+
+            <div class="flex flex-col gap-6">
+              <div
+                class="info-card rounded-3xl p-6 flex items-center gap-5 bg-[#0f1419]/80 backdrop-blur-xl border border-gray-700/30"
+              >
+                <div
+                  class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 text-xl flex-shrink-0"
+                >
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-400 mb-1">Email</p>
+                  <a
+                    href="mailto:jonathan6wando@gmail.com"
+                    class="font-semibold hover:text-emerald-400 transition-colors"
+                    >jonathan6wando@gmail.com</a
+                  >
+                </div>
+              </div>
+              <div
+                class="info-card rounded-3xl p-6 flex items-center gap-5 bg-[#0f1419]/80 backdrop-blur-xl border border-gray-700/30"
+              >
+                <div
+                  class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 text-xl flex-shrink-0"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-400 mb-1">LinkedIn</p>
+                  <a
+                    href="https://www.linkedin.com/in/olivier-jonathan-dipo-wando-ba9138378"
+                    target="_blank"
+                    class="font-semibold hover:text-emerald-400 transition-colors"
+                    >Olivier Jonathan Wando</a
+                  >
+                </div>
+              </div>
+              <div
+                class="info-card rounded-3xl p-6 flex items-center gap-5 bg-[#0f1419]/80 backdrop-blur-xl border border-gray-700/30"
+              >
+                <div
+                  class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 text-xl flex-shrink-0"
+                >
+                  <i class="fab fa-github"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-400 mb-1">GitHub</p>
+                  <a
+                    href="https://github.com/Joe-Wando"
+                    target="_blank"
+                    class="font-semibold hover:text-emerald-400 transition-colors"
+                    >Joe-Wando</a
+                  >
+                </div>
+              </div>
+              <div
+                class="info-card rounded-3xl p-6 flex items-center gap-5 bg-[#0f1419]/80 backdrop-blur-xl border border-gray-700/30"
+              >
+                <div
+                  class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 text-xl flex-shrink-0"
+                >
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-400 mb-1">Localisation</p>
+                  <p class="font-semibold">Dakar, Sénégal</p>
+                </div>
+              </div>
+              <div
+                class="bg-emerald-500/5 border border-emerald-500/20 rounded-3xl p-6"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <div
+                    class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"
+                  ></div>
+                  <span class="font-semibold text-emerald-400">Disponible</span>
+                </div>
+                <p class="text-gray-400 text-sm">
+                  Actuellement ouvert aux opportunités de stage, de
+                  collaboration ou de projets freelance.
+                </p>
               </div>
             </div>
           </div>
@@ -369,36 +2038,43 @@
         <p class="text-gray-400 text-xl mb-10">
           Disponible pour freelance ou collaboration
         </p>
-
         <a
-          href="contact.html"
+          href="#contact"
           class="bg-emerald-500 hover:bg-emerald-400 text-black px-10 py-5 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 inline-block shadow-lg hover:shadow-emerald-500/50"
+          >Me contacter</a
         >
-          Me contacter
-        </a>
       </section>
     </main>
 
-    <footer class="bg-[#02060f] border-t border-gray-800 py-12 text-center">
-      <p class="text-gray-500 mb-6">© 2026 Joe Wando - Tous droits réservés</p>
+    <div
+      id="toast"
+      class="hidden fixed bottom-8 right-8 z-50 bg-emerald-500 text-black font-semibold px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3"
+    >
+      <i class="fas fa-check-circle text-xl"></i>Message envoyé avec succès !
+    </div>
 
+    <footer
+      class="bg-[#02060f] border-t border-gray-800 py-12 text-center relative z-10"
+    >
+      <p class="text-gray-500 mb-6">©️ 2026 Joe Wando - Tous droits réservés</p>
       <div class="flex justify-center gap-8 text-2xl">
         <a
           href="https://www.linkedin.com/in/olivier-jonathan-dipo-wando-ba9138378"
+          target="_blank"
           class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
-          ><i class="fab fa-linkedin"></i
+          ><i class="fab fa-linkedin-in"></i
         ></a>
         <a
           href="https://github.com/Joe-Wando"
+          target="_blank"
           class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
           ><i class="fab fa-github"></i
         ></a>
         <a
           href="mailto:jonathan6wando@gmail.com"
           class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110"
-        >
-          <i class="fas fa-envelope"></i>
-        </a>
+          ><i class="fas fa-envelope"></i
+        ></a>
       </div>
     </footer>
 
@@ -406,24 +2082,95 @@
       function toggleMobileMenu() {
         document.getElementById("mobile-menu").classList.toggle("hidden");
       }
+      function closeMobileMenu() {
+        document.getElementById("mobile-menu").classList.add("hidden");
+      }
 
+      const sections = [
+        "accueil",
+        "formations",
+        "competences",
+        "experiences",
+        "projets",
+        "apropos",
+        "contact",
+      ];
+      const navLinks = document.querySelectorAll(".nav-link");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
+              navLinks.forEach((l) => l.classList.remove("nav-active"));
+              const active = document.querySelector(
+                `.nav-link[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("nav-active");
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px" },
+      );
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+      const boxObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".parcours-box, .competences-box")
+        .forEach((b) => boxObserver.observe(b));
+
+      const cardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
               entry.target.classList.add("opacity-100", "translate-y-0");
-              entry.target.classList.remove("opacity-0", "translate-y-10");
+              entry.target.classList.remove("opacity-0", "translate-y-12");
             }
           });
         },
         { threshold: 0.1 },
       );
-
       document
-        .querySelectorAll(".parcours-box, .competences-box")
-        .forEach((box) => {
-          observer.observe(box);
+        .querySelectorAll(".stat-card, .lang-card, .goal-card, .info-card")
+        .forEach((el) => {
+          el.classList.add(
+            "opacity-0",
+            "translate-y-12",
+            "transition-all",
+            "duration-700",
+            "ease-out",
+          );
+          cardObserver.observe(el);
         });
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById("submit-btn");
+        const orig = btn.innerHTML;
+        btn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+        btn.disabled = true;
+        setTimeout(() => {
+          document.getElementById("contact-form").reset();
+          btn.innerHTML = orig;
+          btn.disabled = false;
+          const toast = document.getElementById("toast");
+          toast.classList.remove("hidden");
+          toast.classList.add("success-toast");
+          setTimeout(() => {
+            toast.classList.add("hidden");
+            toast.classList.remove("success-toast");
+          }, 4000);
+        }, 1500);
+      }
     </script>
   </body>
 </html>
